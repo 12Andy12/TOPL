@@ -1,0 +1,1568 @@
+# Теория языков программирования и методы трансляции
+# (TOPL) Theory of programming languages and translation methods
+
+maxStepCount = 9
+wordSize = 2
+abc = ["a", "b"]
+N = ["S", "C", "D", "A", "B"]
+rules = {
+    "S": ["CD"],
+    "C": ["aCA", "bCB", ""],
+    "AD": ["aD"],
+    "BD": ["bD"],
+    "Aa": ["aA"],
+    "Ab": ["bA"],
+    "Ba": ["aB"],
+    "Bb": ["bB"],
+    "D": [""]
+}
+
+result = []
+absoluteResult = set()
+
+
+def normaliseResult():
+    for word in result:
+        is_correct = True
+        for key in N:
+            if key in word and key != "":
+                is_correct = False
+                break
+        if is_correct:
+            absoluteResult.add(word)
+
+
+def genereate(thisWord="S", stepCount=0):
+    if stepCount >= maxStepCount or thisWord == "":
+        print(f"answer = {thisWord}")
+        result.append(thisWord)
+        return
+
+    for key in rules:
+        if key not in thisWord:
+            continue
+        for val in rules[key]:
+            print(f"{stepCount}) {thisWord} ({key}: {val})")
+            genereate(thisWord.replace(key, val, 1), stepCount + 1)
+
+
+genereate()
+normaliseResult()
+print(result)
+print(absoluteResult)
+
+# Теория языков программирования и методы трансляции
+# (TOPL) Theory of programming languages and translation methods
+
+import os.path
+import sqlite3
+import sys
+import time
+from PyQt5 import uic, QtCore, QtWidgets
+from PyQt5.QtSql import QSqlDatabase, QSqlQuery, QSqlTableModel, QSqlQueryModel
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
+from PyQt5.QtCore import *
+
+import main_window
+
+
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+
+    Application = main_window.App()
+    Application.show()
+
+    try:
+        sys.exit(app.exec_())
+    except SystemExit:
+        print('Closing Window...')
+2023-09-24 00:01:56.538855: Init rules tabel started
+2023-09-24 00:01:56.678856: Init rules tabel completed
+2023-09-24 00:01:56.678856: Init alphabet tabel started
+2023-09-24 00:01:56.679855: Init alphabet tabel completed
+2023-09-24 00:01:56.680855: Init N tabel started
+2023-09-24 00:01:56.681855: Init N tabel completed
+2023-09-24 00:01:58.171473: Add row inside rules table started
+2023-09-24 00:01:58.187683: Add row inside rules table completed
+2023-09-24 00:01:58.434693: Add row inside alphabet table started
+2023-09-24 00:01:58.439693: Add row inside alphabet table completed
+2023-09-24 00:01:58.766591: Deleting row inside table start
+2023-09-24 00:01:58.767626: Deleting row inside table completed
+2023-09-24 00:01:59.839390: Add row inside alphabet table started
+2023-09-24 00:01:59.843389: Add row inside alphabet table completed
+2023-09-24 00:02:00.238763: Deleting row inside table start
+2023-09-24 00:02:00.238763: Deleting row inside table completed
+2023-09-24 00:02:07.760317: Init rules tabel started
+2023-09-24 00:02:07.902317: Init rules tabel completed
+2023-09-24 00:02:07.902317: Init alphabet tabel started
+2023-09-24 00:02:07.903317: Init alphabet tabel completed
+2023-09-24 00:02:07.903317: Init N tabel started
+2023-09-24 00:02:07.904318: Init N tabel completed
+2023-09-24 00:02:08.787384: Add row inside alphabet table started
+2023-09-24 00:02:08.799385: Add row inside alphabet table completed
+2023-09-24 00:02:09.598662: Add row inside rules table started
+2023-09-24 00:02:09.603659: Add row inside rules table completed
+2023-09-24 00:02:10.761421: Add row inside rules table started
+2023-09-24 00:02:10.766424: Add row inside rules table completed
+2023-09-24 00:02:11.583985: Deleting row inside table start
+2023-09-24 00:02:11.585011: Deleting row inside table completed
+2023-09-24 00:02:14.264077: Add row inside N table started
+2023-09-24 00:02:14.269081: Add row inside N table completed
+2023-09-24 00:02:31.880923: Init rules tabel started
+2023-09-24 00:02:32.023923: Init rules tabel completed
+2023-09-24 00:02:32.023923: Init alphabet tabel started
+2023-09-24 00:02:32.024923: Init alphabet tabel completed
+2023-09-24 00:02:32.024923: Init N tabel started
+2023-09-24 00:02:32.025923: Init N tabel completed
+2023-09-24 00:02:39.641694: Add row inside N table started
+2023-09-24 00:02:39.655579: Add row inside N table completed
+2023-09-24 00:02:45.752113: Deleting row inside table start
+2023-09-24 00:10:23.908374: Init rules tabel started
+2023-09-24 00:10:24.053374: Init rules tabel completed
+2023-09-24 00:10:24.053374: Init alphabet tabel started
+2023-09-24 00:10:24.054374: Init alphabet tabel completed
+2023-09-24 00:10:24.054374: Init N tabel started
+2023-09-24 00:10:24.055374: Init N tabel completed
+2023-09-24 00:12:44.290202: Init rules tabel started
+2023-09-24 00:12:44.433203: Init rules tabel completed
+2023-09-24 00:12:44.433203: Init alphabet tabel started
+2023-09-24 00:12:44.434205: Init alphabet tabel completed
+2023-09-24 00:12:44.435203: Init N tabel started
+2023-09-24 00:12:44.436203: Init N tabel completed
+2023-09-24 00:12:45.580819: Get N started
+2023-09-24 00:12:58.262187: Init rules tabel started
+2023-09-24 00:12:58.401947: Init rules tabel completed
+2023-09-24 00:12:58.401947: Init alphabet tabel started
+2023-09-24 00:12:58.402947: Init alphabet tabel completed
+2023-09-24 00:12:58.402947: Init N tabel started
+2023-09-24 00:12:58.403948: Init N tabel completed
+2023-09-24 00:13:01.097247: Get N started
+2023-09-24 00:13:24.615619: Init rules tabel started
+2023-09-24 00:13:24.757636: Init rules tabel completed
+2023-09-24 00:13:24.757636: Init alphabet tabel started
+2023-09-24 00:13:24.758638: Init alphabet tabel completed
+2023-09-24 00:13:24.759637: Init N tabel started
+2023-09-24 00:13:24.760637: Init N tabel completed
+2023-09-24 00:13:25.485428: Get N started
+2023-09-24 00:13:25.485428: Get N completed, N = []
+2023-09-24 00:13:29.024842: Add row inside N table started
+2023-09-24 00:13:29.037842: Add row inside N table completed
+2023-09-24 00:13:29.700344: Get N started
+2023-09-24 00:13:36.462669: Init rules tabel started
+2023-09-24 00:13:36.602669: Init rules tabel completed
+2023-09-24 00:13:36.603669: Init alphabet tabel started
+2023-09-24 00:13:36.604669: Init alphabet tabel completed
+2023-09-24 00:13:36.604669: Init N tabel started
+2023-09-24 00:13:36.605670: Init N tabel completed
+2023-09-24 00:13:37.178216: Add row inside N table started
+2023-09-24 00:13:37.191220: Add row inside N table completed
+2023-09-24 00:13:38.375932: Get N started
+2023-09-24 00:13:57.672061: Init rules tabel started
+2023-09-24 00:13:57.812061: Init rules tabel completed
+2023-09-24 00:13:57.812061: Init alphabet tabel started
+2023-09-24 00:13:57.813062: Init alphabet tabel completed
+2023-09-24 00:13:57.813062: Init N tabel started
+2023-09-24 00:13:57.814061: Init N tabel completed
+2023-09-24 00:13:59.204736: Add row inside N table started
+2023-09-24 00:13:59.217740: Add row inside N table completed
+2023-09-24 00:14:01.812386: Get N started
+2023-09-24 00:14:01.813391: Get N completed, N = ['123']
+2023-09-24 00:14:40.886542: Init rules tabel started
+2023-09-24 00:14:41.027542: Init rules tabel completed
+2023-09-24 00:14:41.028542: Init alphabet tabel started
+2023-09-24 00:14:41.029545: Init alphabet tabel completed
+2023-09-24 00:14:41.029545: Init N tabel started
+2023-09-24 00:14:41.030545: Init N tabel completed
+2023-09-24 00:14:41.986020: Get N started
+2023-09-24 00:14:41.987050: Get N completed, N = []
+2023-09-24 00:14:42.979407: Add row inside N table started
+2023-09-24 00:14:42.991829: Add row inside N table completed
+2023-09-24 00:14:43.579791: Get N started
+2023-09-24 00:14:48.084010: Init rules tabel started
+2023-09-24 00:14:48.225318: Init rules tabel completed
+2023-09-24 00:14:48.225318: Init alphabet tabel started
+2023-09-24 00:14:48.226318: Init alphabet tabel completed
+2023-09-24 00:14:48.226318: Init N tabel started
+2023-09-24 00:14:48.227318: Init N tabel completed
+2023-09-24 00:14:49.725926: Add row inside N table started
+2023-09-24 00:14:49.739570: Add row inside N table completed
+2023-09-24 00:15:55.048284: Init rules tabel started
+2023-09-24 00:15:55.188164: Init rules tabel completed
+2023-09-24 00:15:55.188164: Init alphabet tabel started
+2023-09-24 00:15:55.189376: Init alphabet tabel completed
+2023-09-24 00:15:55.189376: Init N tabel started
+2023-09-24 00:15:55.190370: Init N tabel completed
+2023-09-24 00:15:56.888207: Get N started
+2023-09-24 00:15:56.889207: Get N completed, N = []
+2023-09-24 00:15:57.994067: Add row inside N table started
+2023-09-24 00:15:58.006444: Add row inside N table completed
+2023-09-24 00:15:58.673957: Get N started
+2023-09-24 00:16:02.891325: Init rules tabel started
+2023-09-24 00:16:03.028324: Init rules tabel completed
+2023-09-24 00:16:03.028324: Init alphabet tabel started
+2023-09-24 00:16:03.029324: Init alphabet tabel completed
+2023-09-24 00:16:03.029324: Init N tabel started
+2023-09-24 00:16:03.030324: Init N tabel completed
+2023-09-24 00:16:04.173322: Add row inside N table started
+2023-09-24 00:16:04.185321: Add row inside N table completed
+2023-09-24 00:16:05.060935: Get N started
+2023-09-24 00:16:16.858747: Init rules tabel started
+2023-09-24 00:16:17.001746: Init rules tabel completed
+2023-09-24 00:16:17.001746: Init alphabet tabel started
+2023-09-24 00:16:17.002747: Init alphabet tabel completed
+2023-09-24 00:16:17.002747: Init N tabel started
+2023-09-24 00:16:17.003747: Init N tabel completed
+2023-09-24 00:16:18.144554: Add row inside N table started
+2023-09-24 00:16:18.156554: Add row inside N table completed
+2023-09-24 00:16:20.101119: Get N started
+2023-09-24 00:16:20.101119: Get N completed, N = []
+2023-09-24 00:16:21.299566: Get N started
+2023-09-24 00:16:21.299566: Get N completed, N = []
+2023-09-24 00:16:21.598480: Get N started
+2023-09-24 00:16:21.598480: Get N completed, N = []
+2023-09-24 00:16:21.788882: Get N started
+2023-09-24 00:16:21.788882: Get N completed, N = []
+2023-09-24 00:16:25.406563: Get N started
+2023-09-24 00:16:25.406563: Get N completed, N = ['1']
+2023-09-24 00:16:28.605049: Add row inside N table started
+2023-09-24 00:16:28.610049: Add row inside N table completed
+2023-09-24 00:16:31.520925: Add row inside N table started
+2023-09-24 00:16:31.524924: Add row inside N table completed
+2023-09-24 00:16:32.383818: Get N started
+2023-09-24 00:16:32.384818: Get N completed, N = ['A', 'B']
+2023-09-24 00:22:02.283425: Init rules tabel started
+2023-09-24 00:22:02.424425: Init rules tabel completed
+2023-09-24 00:22:02.425428: Init alphabet tabel started
+2023-09-24 00:22:02.426425: Init alphabet tabel completed
+2023-09-24 00:22:02.426425: Init N tabel started
+2023-09-24 00:22:02.427425: Init N tabel completed
+2023-09-24 00:22:03.656126: Add row inside N table started
+2023-09-24 00:22:03.669126: Add row inside N table completed
+2023-09-24 00:22:04.455359: Get N started
+2023-09-24 00:22:04.455359: Get N completed, N = []
+2023-09-24 00:22:04.455359: Get alphabet started
+2023-09-24 00:22:04.456360: Get alphabet completed, alphabet = []
+2023-09-24 00:22:04.456360: Get alphabet started
+2023-09-24 00:22:04.456360: Get alphabet completed, alphabet = []
+2023-09-24 00:22:07.666797: Add row inside alphabet table started
+2023-09-24 00:22:07.671797: Add row inside alphabet table completed
+2023-09-24 00:22:08.348842: Get N started
+2023-09-24 00:22:08.349872: Get N completed, N = []
+2023-09-24 00:22:08.349872: Get alphabet started
+2023-09-24 00:22:08.350527: Get alphabet completed, alphabet = []
+2023-09-24 00:22:08.350527: Get alphabet started
+2023-09-24 00:22:08.350527: Get alphabet completed, alphabet = []
+2023-09-24 00:22:09.364375: Add row inside rules table started
+2023-09-24 00:22:09.369374: Add row inside rules table completed
+2023-09-24 00:22:10.618378: Get N started
+2023-09-24 00:22:10.618378: Get N completed, N = []
+2023-09-24 00:22:10.618378: Get alphabet started
+2023-09-24 00:22:10.619385: Get alphabet completed, alphabet = []
+2023-09-24 00:22:10.619385: Get alphabet started
+2023-09-24 00:22:10.619385: Get alphabet completed, alphabet = []
+2023-09-24 00:22:19.004711: Add row inside alphabet table started
+2023-09-24 00:22:19.008712: Add row inside alphabet table completed
+2023-09-24 00:22:24.656231: Add row inside N table started
+2023-09-24 00:22:24.661230: Add row inside N table completed
+2023-09-24 00:22:31.130800: Add row inside N table started
+2023-09-24 00:22:31.135809: Add row inside N table completed
+2023-09-24 00:22:33.599465: Get N started
+2023-09-24 00:22:33.599465: Get N completed, N = ['S', 'C', 'D']
+2023-09-24 00:22:33.600471: Get alphabet started
+2023-09-24 00:22:33.600471: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 00:22:33.600471: Get alphabet started
+2023-09-24 00:22:33.601469: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 00:22:36.591523: Get N started
+2023-09-24 00:22:36.592523: Get N completed, N = ['S', 'C', 'D']
+2023-09-24 00:22:36.592523: Get alphabet started
+2023-09-24 00:22:36.593523: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 00:22:36.593523: Get alphabet started
+2023-09-24 00:22:36.593523: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 00:22:40.157586: Add row inside N table started
+2023-09-24 00:22:40.162586: Add row inside N table completed
+2023-09-24 00:22:40.673997: Deleting row inside table start
+2023-09-24 00:22:40.674995: Deleting row inside table completed
+2023-09-24 00:22:41.466750: Get N started
+2023-09-24 00:22:41.467750: Get N completed, N = ['S', 'C', 'D']
+2023-09-24 00:22:41.467750: Get alphabet started
+2023-09-24 00:22:41.467750: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 00:22:41.467750: Get alphabet started
+2023-09-24 00:22:41.468759: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 00:22:44.709946: Get N started
+2023-09-24 00:22:44.710947: Get N completed, N = ['S', 'C', 'D']
+2023-09-24 00:22:44.710947: Get alphabet started
+2023-09-24 00:22:44.710947: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 00:22:44.711947: Get alphabet started
+2023-09-24 00:22:44.711947: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 00:23:12.056581: Add row inside N table started
+2023-09-24 00:23:12.061586: Add row inside N table completed
+2023-09-24 00:23:13.151457: Deleting row inside table start
+2023-09-24 00:23:13.151457: Deleting row inside table completed
+2023-09-24 00:23:14.863877: Add row inside alphabet table started
+2023-09-24 00:23:14.868877: Add row inside alphabet table completed
+2023-09-24 00:23:15.728135: Deleting row inside table start
+2023-09-24 00:23:15.729134: Deleting row inside table completed
+2023-09-24 00:23:16.652117: Add row inside rules table started
+2023-09-24 00:23:16.656158: Add row inside rules table completed
+2023-09-24 00:23:17.079901: Deleting row inside table start
+2023-09-24 00:23:17.080931: Deleting row inside table completed
+2023-09-24 00:23:29.110466: Get N started
+2023-09-24 00:23:29.110466: Get N completed, N = ['S', 'C', 'D']
+2023-09-24 00:23:29.111465: Get alphabet started
+2023-09-24 00:23:29.111465: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 00:23:29.111465: Get alphabet started
+2023-09-24 00:26:55.522878: Init rules tabel started
+2023-09-24 00:26:55.663959: Init rules tabel completed
+2023-09-24 00:26:55.663959: Init alphabet tabel started
+2023-09-24 00:26:55.664931: Init alphabet tabel completed
+2023-09-24 00:26:55.664931: Init N tabel started
+2023-09-24 00:26:55.665931: Init N tabel completed
+2023-09-24 00:26:57.044999: Add row inside rules table started
+2023-09-24 00:26:57.058001: Add row inside rules table completed
+2023-09-24 00:27:01.106069: Get N started
+2023-09-24 00:27:01.106069: Get N completed, N = []
+2023-09-24 00:27:01.106069: Get alphabet started
+2023-09-24 00:27:01.107069: Get alphabet completed, alphabet = []
+2023-09-24 00:27:01.107069: Get alphabet started
+2023-09-24 00:28:00.983431: Init rules tabel started
+2023-09-24 00:28:01.124766: Init rules tabel completed
+2023-09-24 00:28:01.124766: Init alphabet tabel started
+2023-09-24 00:28:01.125766: Init alphabet tabel completed
+2023-09-24 00:28:01.125766: Init N tabel started
+2023-09-24 00:28:01.126766: Init N tabel completed
+2023-09-24 00:28:02.416976: Add row inside rules table started
+2023-09-24 00:28:02.428977: Add row inside rules table completed
+2023-09-24 00:28:06.280940: Get N started
+2023-09-24 00:28:06.280940: Get N completed, N = []
+2023-09-24 00:28:06.280940: Get alphabet started
+2023-09-24 00:28:06.281940: Get alphabet completed, alphabet = []
+2023-09-24 00:28:06.281940: Get alphabet started
+2023-09-24 00:30:07.837333: Init rules tabel started
+2023-09-24 00:30:07.976333: Init rules tabel completed
+2023-09-24 00:30:07.976333: Init alphabet tabel started
+2023-09-24 00:30:07.977332: Init alphabet tabel completed
+2023-09-24 00:30:07.978332: Init N tabel started
+2023-09-24 00:30:07.979332: Init N tabel completed
+2023-09-24 00:30:08.779598: Add row inside rules table started
+2023-09-24 00:30:08.796600: Add row inside rules table completed
+2023-09-24 00:30:12.241602: Get N started
+2023-09-24 00:30:12.242601: Get N completed, N = []
+2023-09-24 00:30:12.242601: Get alphabet started
+2023-09-24 00:30:12.242601: Get alphabet completed, alphabet = []
+2023-09-24 00:30:12.242601: Get alphabet started
+2023-09-24 00:30:12.242601: Get alphabet completed, alphabet = []
+2023-09-24 00:30:42.614277: Init rules tabel started
+2023-09-24 00:30:42.757225: Init rules tabel completed
+2023-09-24 00:30:42.757225: Init alphabet tabel started
+2023-09-24 00:30:42.758226: Init alphabet tabel completed
+2023-09-24 00:30:42.758226: Init N tabel started
+2023-09-24 00:30:42.759226: Init N tabel completed
+2023-09-24 00:30:44.005675: Add row inside rules table started
+2023-09-24 00:30:44.017675: Add row inside rules table completed
+2023-09-24 00:30:48.475561: Get N started
+2023-09-24 00:30:48.475561: Get N completed, N = []
+2023-09-24 00:30:48.475561: Get alphabet started
+2023-09-24 00:30:48.476562: Get alphabet completed, alphabet = []
+2023-09-24 00:30:48.476562: Get rules started
+2023-09-24 00:30:48.476562: Get rules completed, alphabet = {'A': 'B'}
+2023-09-24 00:30:50.780139: Add row inside rules table started
+2023-09-24 00:30:50.785304: Add row inside rules table completed
+2023-09-24 00:30:55.452864: Get N started
+2023-09-24 00:30:55.452864: Get N completed, N = []
+2023-09-24 00:30:55.452864: Get alphabet started
+2023-09-24 00:30:55.453867: Get alphabet completed, alphabet = []
+2023-09-24 00:30:55.453867: Get rules started
+2023-09-24 00:30:55.453867: Get rules completed, alphabet = {'A': 'B', 'S': 'CD'}
+2023-09-24 00:30:57.667623: Add row inside rules table started
+2023-09-24 00:30:57.672621: Add row inside rules table completed
+2023-09-24 00:31:05.890630: Add row inside rules table started
+2023-09-24 00:31:05.895664: Add row inside rules table completed
+2023-09-24 00:31:15.805265: Get N started
+2023-09-24 00:31:15.806265: Get N completed, N = []
+2023-09-24 00:31:15.806265: Get alphabet started
+2023-09-24 00:31:15.806265: Get alphabet completed, alphabet = []
+2023-09-24 00:31:15.807265: Get rules started
+2023-09-24 00:32:53.908664: Init rules tabel started
+2023-09-24 00:32:54.047517: Init rules tabel completed
+2023-09-24 00:32:54.047517: Init alphabet tabel started
+2023-09-24 00:32:54.048521: Init alphabet tabel completed
+2023-09-24 00:32:54.048521: Init N tabel started
+2023-09-24 00:32:54.049520: Init N tabel completed
+2023-09-24 00:32:55.418314: Add row inside rules table started
+2023-09-24 00:32:55.430854: Add row inside rules table completed
+2023-09-24 00:33:00.853551: Get N started
+2023-09-24 00:33:00.853551: Get N completed, N = []
+2023-09-24 00:33:00.853551: Get alphabet started
+2023-09-24 00:33:00.854550: Get alphabet completed, alphabet = []
+2023-09-24 00:33:00.854550: Get rules started
+2023-09-24 00:33:00.854550: Get rules completed, alphabet = []
+2023-09-24 00:33:16.022756: Init rules tabel started
+2023-09-24 00:33:16.164880: Init rules tabel completed
+2023-09-24 00:33:16.164880: Init alphabet tabel started
+2023-09-24 00:33:16.165880: Init alphabet tabel completed
+2023-09-24 00:33:16.165880: Init N tabel started
+2023-09-24 00:33:16.166880: Init N tabel completed
+2023-09-24 00:33:16.876883: Add row inside rules table started
+2023-09-24 00:33:16.932883: Add row inside rules table completed
+2023-09-24 00:33:21.556107: Get N started
+2023-09-24 00:33:21.556107: Get N completed, N = []
+2023-09-24 00:33:21.557105: Get alphabet started
+2023-09-24 00:33:21.557105: Get alphabet completed, alphabet = []
+2023-09-24 00:33:21.557105: Get rules started
+2023-09-24 00:33:21.557105: Get rules completed, rules = {'A': ['B']}
+2023-09-24 00:33:23.475503: Add row inside rules table started
+2023-09-24 00:33:23.479506: Add row inside rules table completed
+2023-09-24 00:33:27.076170: Get N started
+2023-09-24 00:33:27.076170: Get N completed, N = []
+2023-09-24 00:33:27.077172: Get alphabet started
+2023-09-24 00:33:27.077172: Get alphabet completed, alphabet = []
+2023-09-24 00:33:27.077172: Get rules started
+2023-09-24 00:33:27.077172: Get rules completed, rules = {'A': ['B', 'C']}
+2023-09-24 00:33:31.490846: Add row inside rules table started
+2023-09-24 00:33:31.495846: Add row inside rules table completed
+2023-09-24 00:33:33.706952: Deleting row inside table start
+2023-09-24 00:33:33.706952: Deleting row inside table completed
+2023-09-24 00:33:33.915568: Deleting row inside table start
+2023-09-24 00:33:33.916572: Deleting row inside table completed
+2023-09-24 00:33:34.112322: Deleting row inside table start
+2023-09-24 00:33:34.113355: Deleting row inside table completed
+2023-09-24 00:41:25.195055: Init rules tabel started
+2023-09-24 00:41:25.335041: Init rules tabel completed
+2023-09-24 00:41:25.335041: Init alphabet tabel started
+2023-09-24 00:41:25.336039: Init alphabet tabel completed
+2023-09-24 00:41:25.336039: Init N tabel started
+2023-09-24 00:41:25.337040: Init N tabel completed
+2023-09-24 00:41:28.100655: Add row inside N table started
+2023-09-24 00:41:28.113286: Add row inside N table completed
+2023-09-24 00:41:29.012942: Get N started
+2023-09-24 00:41:29.013940: Get N completed, N = []
+2023-09-24 00:41:35.623498: Add row inside alphabet table started
+2023-09-24 00:41:35.627498: Add row inside alphabet table completed
+2023-09-24 00:41:38.156036: Add row inside N table started
+2023-09-24 00:41:38.161042: Add row inside N table completed
+2023-09-24 00:41:38.592189: Deleting row inside table start
+2023-09-24 00:41:38.592189: Deleting row inside table completed
+2023-09-24 00:42:26.777168: Add row inside alphabet table started
+2023-09-24 00:42:26.781561: Add row inside alphabet table completed
+2023-09-24 00:42:29.408371: Add row inside rules table started
+2023-09-24 00:42:29.412372: Add row inside rules table completed
+2023-09-24 00:42:33.475480: Add row inside rules table started
+2023-09-24 00:42:33.480478: Add row inside rules table completed
+2023-09-24 00:42:46.287696: Add row inside N table started
+2023-09-24 00:42:46.291694: Add row inside N table completed
+2023-09-24 00:42:47.897138: Add row inside N table started
+2023-09-24 00:42:47.902143: Add row inside N table completed
+2023-09-24 00:42:49.724662: Add row inside rules table started
+2023-09-24 00:42:49.728664: Add row inside rules table completed
+2023-09-24 00:42:59.182351: Get N started
+2023-09-24 00:42:59.183356: Get N completed, N = ['S', 'A', 'B']
+2023-09-24 00:42:59.183356: Get alphabet started
+2023-09-24 00:42:59.183356: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 00:42:59.183356: Get rules started
+2023-09-24 00:42:59.184356: Get rules completed, rules = {'S': ['CD'], 'C': ['aCA', 'bCB']}
+2023-09-24 00:43:04.732998: Get N started
+2023-09-24 00:43:04.733997: Get N completed, N = ['S', 'A', 'B']
+2023-09-24 00:43:04.733997: Get alphabet started
+2023-09-24 00:43:04.733997: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 00:43:04.733997: Get rules started
+2023-09-24 00:43:04.734997: Get rules completed, rules = {'S': ['CD'], 'C': ['aCA', 'bCB']}
+2023-09-24 00:43:05.253441: Get N started
+2023-09-24 00:43:05.253441: Get N completed, N = ['S', 'A', 'B']
+2023-09-24 00:43:05.254442: Get alphabet started
+2023-09-24 00:43:05.254442: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 00:43:05.254442: Get rules started
+2023-09-24 00:43:05.254442: Get rules completed, rules = {'S': ['CD'], 'C': ['aCA', 'bCB']}
+2023-09-24 00:43:05.712283: Get N started
+2023-09-24 00:43:05.713321: Get N completed, N = ['S', 'A', 'B']
+2023-09-24 00:43:05.713321: Get alphabet started
+2023-09-24 00:43:05.713321: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 00:43:05.714289: Get rules started
+2023-09-24 00:43:05.714289: Get rules completed, rules = {'S': ['CD'], 'C': ['aCA', 'bCB']}
+2023-09-24 00:44:40.486723: Init rules tabel started
+2023-09-24 00:44:40.627223: Init rules tabel completed
+2023-09-24 00:44:40.627223: Init alphabet tabel started
+2023-09-24 00:44:40.628224: Init alphabet tabel completed
+2023-09-24 00:44:40.628224: Init N tabel started
+2023-09-24 00:44:40.629223: Init N tabel completed
+2023-09-24 00:44:41.937333: Add row inside rules table started
+2023-09-24 00:44:41.949339: Add row inside rules table completed
+2023-09-24 00:44:46.730141: Add row inside rules table started
+2023-09-24 00:44:46.735273: Add row inside rules table completed
+2023-09-24 00:44:54.461001: Add row inside rules table started
+2023-09-24 00:44:54.466001: Add row inside rules table completed
+2023-09-24 00:44:59.987695: Add row inside alphabet table started
+2023-09-24 00:44:59.992684: Add row inside alphabet table completed
+2023-09-24 00:45:01.553112: Add row inside alphabet table started
+2023-09-24 00:45:01.558111: Add row inside alphabet table completed
+2023-09-24 00:45:03.597055: Add row inside N table started
+2023-09-24 00:45:03.601055: Add row inside N table completed
+2023-09-24 00:45:04.911966: Add row inside N table started
+2023-09-24 00:45:04.915966: Add row inside N table completed
+2023-09-24 00:45:06.565162: Add row inside N table started
+2023-09-24 00:45:06.569169: Add row inside N table completed
+2023-09-24 00:45:08.053239: Add row inside N table started
+2023-09-24 00:45:08.058239: Add row inside N table completed
+2023-09-24 00:45:14.516197: generating start
+2023-09-24 00:45:14.516197: Get N started
+2023-09-24 00:45:14.516197: Get N completed, N = ['S', 'A', 'B', 'C']
+2023-09-24 00:45:14.517197: Get alphabet started
+2023-09-24 00:45:14.517197: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 00:45:14.517197: Get rules started
+2023-09-24 00:45:14.517197: Get rules completed, rules = {'S': ['CD'], 'C': ['aCA', 'bCB']}
+2023-09-24 00:45:14.518198: generating completed
+2023-09-24 00:45:59.907188: Add row inside alphabet table started
+2023-09-24 00:45:59.912187: Add row inside alphabet table completed
+2023-09-24 00:46:00.735916: Deleting row inside table start
+2023-09-24 00:46:00.735916: Deleting row inside table completed
+2023-09-24 00:49:31.624313: Init rules tabel started
+2023-09-24 00:49:31.764773: Init rules tabel completed
+2023-09-24 00:49:31.765773: Init alphabet tabel started
+2023-09-24 00:49:31.766744: Init alphabet tabel completed
+2023-09-24 00:49:31.766744: Init N tabel started
+2023-09-24 00:49:31.767745: Init N tabel completed
+2023-09-24 00:49:33.178668: generating start
+2023-09-24 00:49:33.178668: Get N started
+2023-09-24 00:49:33.178668: Get N completed, N = []
+2023-09-24 00:49:55.763540: Add row inside rules table started
+2023-09-24 00:49:55.775540: Add row inside rules table completed
+2023-09-24 00:49:56.565337: Add row inside alphabet table started
+2023-09-24 00:49:56.569337: Add row inside alphabet table completed
+2023-09-24 00:49:57.158109: Add row inside N table started
+2023-09-24 00:49:57.163108: Add row inside N table completed
+2023-09-24 00:59:29.924277: Init rules tabel started
+2023-09-24 00:59:30.065277: Init rules tabel completed
+2023-09-24 00:59:30.065277: Init alphabet tabel started
+2023-09-24 00:59:30.066277: Init alphabet tabel completed
+2023-09-24 00:59:30.066277: Init N tabel started
+2023-09-24 00:59:30.067277: Init N tabel completed
+2023-09-24 01:10:23.550976: Init rules tabel started
+2023-09-24 01:10:23.693726: Init rules tabel completed
+2023-09-24 01:10:23.694724: Init alphabet tabel started
+2023-09-24 01:10:23.695724: Init alphabet tabel completed
+2023-09-24 01:10:23.695724: Init N tabel started
+2023-09-24 01:10:23.696724: Init N tabel completed
+2023-09-24 01:10:37.637554: Init rules tabel started
+2023-09-24 01:10:37.779583: Init rules tabel completed
+2023-09-24 01:10:37.780581: Init alphabet tabel started
+2023-09-24 01:10:37.781580: Init alphabet tabel completed
+2023-09-24 01:10:37.781580: Init N tabel started
+2023-09-24 01:10:37.782590: Init N tabel completed
+2023-09-24 01:20:34.886118: Init rules tabel started
+2023-09-24 01:20:35.028627: Init rules tabel completed
+2023-09-24 01:20:35.028627: Init alphabet tabel started
+2023-09-24 01:20:35.029628: Init alphabet tabel completed
+2023-09-24 01:20:35.030627: Init N tabel started
+2023-09-24 01:20:35.030627: Init N tabel completed
+2023-09-24 01:21:31.145711: Init rules tabel started
+2023-09-24 01:21:31.284711: Init rules tabel completed
+2023-09-24 01:21:31.284711: Init alphabet tabel started
+2023-09-24 01:21:31.285712: Init alphabet tabel completed
+2023-09-24 01:21:31.285712: Init N tabel started
+2023-09-24 01:21:31.286713: Init N tabel completed
+2023-09-24 01:21:54.399768: Init rules tabel started
+2023-09-24 01:21:54.542768: Init rules tabel completed
+2023-09-24 01:21:54.542768: Init alphabet tabel started
+2023-09-24 01:21:54.543769: Init alphabet tabel completed
+2023-09-24 01:21:54.543769: Init N tabel started
+2023-09-24 01:21:54.544769: Init N tabel completed
+2023-09-24 01:27:09.606756: Init rules tabel started
+2023-09-24 01:27:09.757755: Init rules tabel completed
+2023-09-24 01:27:09.758757: Init alphabet tabel started
+2023-09-24 01:27:09.759756: Init alphabet tabel completed
+2023-09-24 01:27:09.759756: Init N tabel started
+2023-09-24 01:27:09.760756: Init N tabel completed
+2023-09-24 01:28:04.173373: Init rules tabel started
+2023-09-24 01:28:04.310462: Init rules tabel completed
+2023-09-24 01:28:04.311465: Init alphabet tabel started
+2023-09-24 01:28:04.312435: Init alphabet tabel completed
+2023-09-24 01:28:04.312435: Init N tabel started
+2023-09-24 01:28:04.313434: Init N tabel completed
+2023-09-24 01:29:54.589406: Init rules tabel started
+2023-09-24 01:29:54.730407: Init rules tabel completed
+2023-09-24 01:29:54.730407: Init alphabet tabel started
+2023-09-24 01:29:54.731407: Init alphabet tabel completed
+2023-09-24 01:29:54.731407: Init N tabel started
+2023-09-24 01:29:54.732407: Init N tabel completed
+2023-09-24 01:30:12.389783: Init rules tabel started
+2023-09-24 01:30:12.529783: Init rules tabel completed
+2023-09-24 01:30:12.529783: Init alphabet tabel started
+2023-09-24 01:30:12.530784: Init alphabet tabel completed
+2023-09-24 01:30:12.530784: Init N tabel started
+2023-09-24 01:30:12.532784: Init N tabel completed
+2023-09-24 01:31:08.720810: Init rules tabel started
+2023-09-24 01:31:08.860810: Init rules tabel completed
+2023-09-24 01:31:08.861810: Init alphabet tabel started
+2023-09-24 01:31:08.861810: Init alphabet tabel completed
+2023-09-24 01:31:08.862815: Init N tabel started
+2023-09-24 01:31:08.863810: Init N tabel completed
+2023-09-24 01:31:18.727156: Init rules tabel started
+2023-09-24 01:31:18.868156: Init rules tabel completed
+2023-09-24 01:31:18.868156: Init alphabet tabel started
+2023-09-24 01:31:18.869156: Init alphabet tabel completed
+2023-09-24 01:31:18.870156: Init N tabel started
+2023-09-24 01:31:18.871156: Init N tabel completed
+2023-09-24 01:32:07.076284: Init rules tabel started
+2023-09-24 01:32:07.216253: Init rules tabel completed
+2023-09-24 01:32:07.216253: Init alphabet tabel started
+2023-09-24 01:32:07.217256: Init alphabet tabel completed
+2023-09-24 01:32:07.217256: Init N tabel started
+2023-09-24 01:32:07.218255: Init N tabel completed
+2023-09-24 01:33:19.863085: Init rules tabel started
+2023-09-24 01:33:20.004085: Init rules tabel completed
+2023-09-24 01:33:20.004085: Init alphabet tabel started
+2023-09-24 01:33:20.005088: Init alphabet tabel completed
+2023-09-24 01:33:20.005088: Init N tabel started
+2023-09-24 01:33:20.006088: Init N tabel completed
+2023-09-24 01:33:35.754030: Init rules tabel started
+2023-09-24 01:33:35.895061: Init rules tabel completed
+2023-09-24 01:33:35.896058: Init alphabet tabel started
+2023-09-24 01:33:35.897032: Init alphabet tabel completed
+2023-09-24 01:33:35.897032: Init N tabel started
+2023-09-24 01:33:35.898030: Init N tabel completed
+2023-09-24 01:38:23.339936: Init rules tabel started
+2023-09-24 01:38:23.480488: Init rules tabel completed
+2023-09-24 01:38:23.480488: Init alphabet tabel started
+2023-09-24 01:38:23.481490: Init alphabet tabel completed
+2023-09-24 01:38:23.481490: Init N tabel started
+2023-09-24 01:38:23.482491: Init N tabel completed
+2023-09-24 01:41:15.611648: Init rules tabel started
+2023-09-24 01:41:15.752172: Init rules tabel completed
+2023-09-24 01:41:15.752172: Init alphabet tabel started
+2023-09-24 01:41:15.753173: Init alphabet tabel completed
+2023-09-24 01:41:15.753173: Init N tabel started
+2023-09-24 01:41:15.754173: Init N tabel completed
+2023-09-24 01:41:27.244098: Init rules tabel started
+2023-09-24 01:41:27.388104: Init rules tabel completed
+2023-09-24 01:41:27.388104: Init alphabet tabel started
+2023-09-24 01:41:27.389069: Init alphabet tabel completed
+2023-09-24 01:41:27.390068: Init N tabel started
+2023-09-24 01:41:27.391067: Init N tabel completed
+2023-09-24 01:43:24.020208: Init rules tabel started
+2023-09-24 01:43:24.158235: Init rules tabel completed
+2023-09-24 01:43:24.158235: Init alphabet tabel started
+2023-09-24 01:43:24.160238: Init alphabet tabel completed
+2023-09-24 01:43:24.160238: Init N tabel started
+2023-09-24 01:43:24.161238: Init N tabel completed
+2023-09-24 01:52:01.246693: Init rules tabel started
+2023-09-24 01:52:01.385823: Init rules tabel completed
+2023-09-24 01:52:01.385823: Init alphabet tabel started
+2023-09-24 01:52:01.386793: Init alphabet tabel completed
+2023-09-24 01:52:01.387795: Init N tabel started
+2023-09-24 01:52:01.388822: Init N tabel completed
+2023-09-24 01:52:02.531417: Add row inside N table started
+2023-09-24 01:52:02.544417: Add row inside N table completed
+2023-09-24 01:52:02.884749: Add row inside alphabet table started
+2023-09-24 01:52:02.888748: Add row inside alphabet table completed
+2023-09-24 01:52:03.503545: Add row inside rules table started
+2023-09-24 01:52:03.508545: Add row inside rules table completed
+2023-09-24 01:52:05.444631: Add row inside alphabet table started
+2023-09-24 01:52:05.450627: Add row inside alphabet table completed
+2023-09-24 01:52:07.038506: Add row inside N table started
+2023-09-24 01:52:07.043504: Add row inside N table completed
+2023-09-24 01:52:20.912924: Add row inside N table started
+2023-09-24 01:52:20.918922: Add row inside N table completed
+2023-09-24 01:52:23.258712: Add row inside N table started
+2023-09-24 01:52:23.264711: Add row inside N table completed
+2023-09-24 01:52:25.644894: Add row inside N table started
+2023-09-24 01:52:25.648893: Add row inside N table completed
+2023-09-24 01:52:28.471094: Add row inside rules table started
+2023-09-24 01:52:28.475094: Add row inside rules table completed
+2023-09-24 01:52:55.286885: Add row inside rules table started
+2023-09-24 01:52:55.290883: Add row inside rules table completed
+2023-09-24 01:53:02.994666: Add row inside rules table started
+2023-09-24 01:53:02.998665: Add row inside rules table completed
+2023-09-24 01:53:07.671716: Add row inside rules table started
+2023-09-24 01:53:07.676713: Add row inside rules table completed
+2023-09-24 01:53:14.280294: Add row inside rules table started
+2023-09-24 01:53:14.285300: Add row inside rules table completed
+2023-09-24 01:53:18.767796: Add row inside rules table started
+2023-09-24 01:53:18.772793: Add row inside rules table completed
+2023-09-24 01:53:22.822212: Add row inside rules table started
+2023-09-24 01:53:22.826210: Add row inside rules table completed
+2023-09-24 01:53:45.420764: Add row inside rules table started
+2023-09-24 01:53:45.425764: Add row inside rules table completed
+2023-09-24 01:54:06.746808: Add row inside rules table started
+2023-09-24 01:54:06.751806: Add row inside rules table completed
+2023-09-24 01:54:10.236866: Add row inside rules table started
+2023-09-24 01:54:10.241865: Add row inside rules table completed
+2023-09-24 01:55:12.116100: generating start
+2023-09-24 01:55:12.116100: Get N started
+2023-09-24 01:55:12.116100: Get N completed, N = ['S', 'A', 'B', 'C', 'D']
+2023-09-24 01:55:12.117100: Get alphabet started
+2023-09-24 01:55:12.117100: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 01:55:12.117100: Get rules started
+2023-09-24 01:55:12.117100: Get rules completed, rules = {'S': ['CD'], 'C': ['aCA', 'bCB', ' '], 'AD': ['aD'], 'BD': ['bD'], 'Aa': ['aA'], 'Ab': ['bA'], 'Ba': ['aB'], 'Bb': ['bB'], 'D': [' ']}
+2023-09-24 01:55:15.734043: generating start
+2023-09-24 01:55:15.735050: Get N started
+2023-09-24 01:55:15.735050: Get N completed, N = ['S', 'A', 'B', 'C', 'D']
+2023-09-24 01:55:15.735050: Get alphabet started
+2023-09-24 01:55:15.736049: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 01:55:15.736049: Get rules started
+2023-09-24 01:55:15.736049: Get rules completed, rules = {'S': ['CD'], 'C': ['aCA', 'bCB', ' '], 'AD': ['aD'], 'BD': ['bD'], 'Aa': ['aA'], 'Ab': ['bA'], 'Ba': ['aB'], 'Bb': ['bB'], 'D': [' ']}
+2023-09-24 01:55:20.754044: generating start
+2023-09-24 01:55:20.754044: Get N started
+2023-09-24 01:55:20.755042: Get N completed, N = ['S', 'A', 'B', 'C', 'D']
+2023-09-24 01:55:20.755042: Get alphabet started
+2023-09-24 01:55:20.755042: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 01:55:20.756076: Get rules started
+2023-09-24 01:55:20.756076: Get rules completed, rules = {'S': ['CD'], 'C': ['aCA', 'bCB', ' '], 'AD': ['aD'], 'BD': ['bD'], 'Aa': ['aA'], 'Ab': ['bA'], 'Ba': ['aB'], 'Bb': ['bB'], 'D': [' ']}
+2023-09-24 01:57:01.174384: generating start
+2023-09-24 01:57:01.174384: Get N started
+2023-09-24 01:57:01.174384: Get N completed, N = ['S', 'A', 'B', 'C', 'D']
+2023-09-24 01:57:01.175385: Get alphabet started
+2023-09-24 01:57:01.175385: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 01:57:01.175385: Get rules started
+2023-09-24 01:57:01.176384: Get rules completed, rules = {'S': ['CD'], 'C': ['aCA', 'bCB', ' '], 'AD': ['aD'], 'BD': ['bD'], 'Aa': ['aA'], 'Ab': ['bA'], 'Ba': ['aB'], 'Bb': ['bB'], 'D': [' ']}
+2023-09-24 01:57:30.959254: Init rules tabel started
+2023-09-24 01:57:31.101043: Init rules tabel completed
+2023-09-24 01:57:31.101043: Init alphabet tabel started
+2023-09-24 01:57:31.102043: Init alphabet tabel completed
+2023-09-24 01:57:31.102043: Init N tabel started
+2023-09-24 01:57:31.103043: Init N tabel completed
+2023-09-24 01:57:33.511031: generating start
+2023-09-24 01:57:33.511031: Get N started
+2023-09-24 01:57:33.512032: Get N completed, N = []
+2023-09-24 01:57:35.117296: Add row inside N table started
+2023-09-24 01:57:35.130295: Add row inside N table completed
+2023-09-24 01:57:37.437852: Add row inside alphabet table started
+2023-09-24 01:57:37.444854: Add row inside alphabet table completed
+2023-09-24 01:57:38.969519: Add row inside rules table started
+2023-09-24 01:57:38.975517: Add row inside rules table completed
+2023-09-24 01:57:40.918781: generating start
+2023-09-24 01:57:40.918781: Get N started
+2023-09-24 01:57:40.919811: Get N completed, N = ['w']
+2023-09-24 01:57:44.554876: generating start
+2023-09-24 01:57:44.554876: Get N started
+2023-09-24 01:57:44.554876: Get N completed, N = ['S']
+2023-09-24 01:57:44.554876: Get alphabet started
+2023-09-24 01:57:44.555876: Get alphabet completed, alphabet = ['w']
+2023-09-24 01:57:44.555876: Get rules started
+2023-09-24 01:57:44.555876: Get rules completed, rules = {'w': ['w']}
+2023-09-24 01:57:48.517755: generating start
+2023-09-24 01:57:48.518751: Get N started
+2023-09-24 01:57:48.518751: Get N completed, N = ['S']
+2023-09-24 01:57:48.518751: Get alphabet started
+2023-09-24 01:57:48.519751: Get alphabet completed, alphabet = ['w']
+2023-09-24 01:57:48.519751: Get rules started
+2023-09-24 01:57:48.520750: Get rules completed, rules = {'S': ['w']}
+2023-09-24 01:58:21.442548: generating start
+2023-09-24 01:58:21.443548: Get N started
+2023-09-24 01:58:21.443548: Get N completed, N = ['S']
+2023-09-24 01:58:21.444548: Get alphabet started
+2023-09-24 01:58:21.444548: Get alphabet completed, alphabet = ['w']
+2023-09-24 01:58:21.444548: Get rules started
+2023-09-24 01:58:21.445548: Get rules completed, rules = {'S': ['w']}
+2023-09-24 01:59:16.863653: Init rules tabel started
+2023-09-24 01:59:17.004623: Init rules tabel completed
+2023-09-24 01:59:17.004623: Init alphabet tabel started
+2023-09-24 01:59:17.005653: Init alphabet tabel completed
+2023-09-24 01:59:17.005653: Init N tabel started
+2023-09-24 01:59:17.006624: Init N tabel completed
+2023-09-24 01:59:19.040147: Add row inside N table started
+2023-09-24 01:59:19.054146: Add row inside N table completed
+2023-09-24 01:59:20.328996: Add row inside alphabet table started
+2023-09-24 01:59:20.334024: Add row inside alphabet table completed
+2023-09-24 01:59:21.875101: Add row inside rules table started
+2023-09-24 01:59:21.879088: Add row inside rules table completed
+2023-09-24 01:59:23.600045: generating start
+2023-09-24 01:59:23.600045: Get N started
+2023-09-24 01:59:23.601085: Get N completed, N = ['S']
+2023-09-24 01:59:23.601085: Get alphabet started
+2023-09-24 01:59:23.602056: Get alphabet completed, alphabet = ['s']
+2023-09-24 01:59:23.602056: Get rules started
+2023-09-24 01:59:23.602056: Get rules completed, rules = {'S': ['s']}
+2023-09-24 01:59:56.594011: Init rules tabel started
+2023-09-24 01:59:56.734029: Init rules tabel completed
+2023-09-24 01:59:56.734029: Init alphabet tabel started
+2023-09-24 01:59:56.735029: Init alphabet tabel completed
+2023-09-24 01:59:56.735029: Init N tabel started
+2023-09-24 01:59:56.736029: Init N tabel completed
+2023-09-24 01:59:58.976243: Add row inside N table started
+2023-09-24 01:59:58.989242: Add row inside N table completed
+2023-09-24 02:00:01.357533: Add row inside alphabet table started
+2023-09-24 02:00:01.362538: Add row inside alphabet table completed
+2023-09-24 02:00:02.093238: Add row inside rules table started
+2023-09-24 02:00:02.097238: Add row inside rules table completed
+2023-09-24 02:00:03.838581: generating start
+2023-09-24 02:00:03.838581: Get N started
+2023-09-24 02:00:03.839582: Get N completed, N = ['S']
+2023-09-24 02:00:03.839582: Get alphabet started
+2023-09-24 02:00:03.839582: Get alphabet completed, alphabet = ['s']
+2023-09-24 02:00:03.840582: Get rules started
+2023-09-24 02:00:03.840582: Get rules completed, rules = {'S': ['s']}
+2023-09-24 02:00:19.212818: Init rules tabel started
+2023-09-24 02:00:19.356828: Init rules tabel completed
+2023-09-24 02:00:19.356828: Init alphabet tabel started
+2023-09-24 02:00:19.357825: Init alphabet tabel completed
+2023-09-24 02:00:19.357825: Init N tabel started
+2023-09-24 02:00:19.358825: Init N tabel completed
+2023-09-24 02:00:22.804040: Add row inside N table started
+2023-09-24 02:00:22.817067: Add row inside N table completed
+2023-09-24 02:00:24.069516: Add row inside alphabet table started
+2023-09-24 02:00:24.075516: Add row inside alphabet table completed
+2023-09-24 02:00:25.037983: Add row inside rules table started
+2023-09-24 02:00:25.042950: Add row inside rules table completed
+2023-09-24 02:00:26.794077: generating start
+2023-09-24 02:00:26.794077: Get N started
+2023-09-24 02:00:26.795072: Get N completed, N = ['S']
+2023-09-24 02:00:26.795072: Get alphabet started
+2023-09-24 02:00:26.795072: Get alphabet completed, alphabet = ['s']
+2023-09-24 02:00:26.796072: Get rules started
+2023-09-24 02:00:26.796072: Get rules completed, rules = {'S': ['s']}
+2023-09-24 02:00:40.260541: generating start
+2023-09-24 02:00:40.260541: Get N started
+2023-09-24 02:00:40.260541: Get N completed, N = ['S']
+2023-09-24 02:00:40.260541: Get alphabet started
+2023-09-24 02:00:40.261541: Get alphabet completed, alphabet = ['s']
+2023-09-24 02:00:40.261541: Get rules started
+2023-09-24 02:00:40.261541: Get rules completed, rules = {'S': ['s']}
+2023-09-24 02:01:13.772875: Init rules tabel started
+2023-09-24 02:01:13.917874: Init rules tabel completed
+2023-09-24 02:01:13.917874: Init alphabet tabel started
+2023-09-24 02:01:13.918875: Init alphabet tabel completed
+2023-09-24 02:01:13.918875: Init N tabel started
+2023-09-24 02:01:13.919875: Init N tabel completed
+2023-09-24 02:01:38.410955: Add row inside N table started
+2023-09-24 02:01:38.422955: Add row inside N table completed
+2023-09-24 02:01:39.932382: Add row inside N table started
+2023-09-24 02:01:39.936382: Add row inside N table completed
+2023-09-24 02:01:40.987993: Add row inside alphabet table started
+2023-09-24 02:01:40.991992: Add row inside alphabet table completed
+2023-09-24 02:01:48.928097: Add row inside alphabet table started
+2023-09-24 02:01:48.934135: Add row inside alphabet table completed
+2023-09-24 02:01:51.666247: Add row inside rules table started
+2023-09-24 02:01:51.672244: Add row inside rules table completed
+2023-09-24 02:01:57.106284: Add row inside rules table started
+2023-09-24 02:01:57.111290: Add row inside rules table completed
+2023-09-24 02:02:05.388967: generating start
+2023-09-24 02:02:05.389965: Get N started
+2023-09-24 02:02:05.389965: Get N completed, N = ['S', 'A']
+2023-09-24 02:02:05.389965: Get alphabet started
+2023-09-24 02:02:05.390964: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 02:02:05.390964: Get rules started
+2023-09-24 02:02:05.390964: Get rules completed, rules = {'S': ['aA', 'bS']}
+2023-09-24 02:03:08.041505: Init rules tabel started
+2023-09-24 02:03:08.181505: Init rules tabel completed
+2023-09-24 02:03:08.181505: Init alphabet tabel started
+2023-09-24 02:03:08.182505: Init alphabet tabel completed
+2023-09-24 02:03:08.182505: Init N tabel started
+2023-09-24 02:03:08.183504: Init N tabel completed
+2023-09-24 02:03:16.890469: Add row inside N table started
+2023-09-24 02:03:16.904474: Add row inside N table completed
+2023-09-24 02:03:18.838688: Add row inside N table started
+2023-09-24 02:03:18.842687: Add row inside N table completed
+2023-09-24 02:03:20.431852: Add row inside alphabet table started
+2023-09-24 02:03:20.435852: Add row inside alphabet table completed
+2023-09-24 02:03:22.682095: Add row inside alphabet table started
+2023-09-24 02:03:22.688089: Add row inside alphabet table completed
+2023-09-24 02:03:24.160813: Add row inside rules table started
+2023-09-24 02:03:24.165813: Add row inside rules table completed
+2023-09-24 02:03:27.964440: Add row inside rules table started
+2023-09-24 02:03:27.969438: Add row inside rules table completed
+2023-09-24 02:03:36.153496: Add row inside rules table started
+2023-09-24 02:03:36.158494: Add row inside rules table completed
+2023-09-24 02:03:39.574044: Add row inside rules table started
+2023-09-24 02:03:39.580042: Add row inside rules table completed
+2023-09-24 02:04:06.182374: generating start
+2023-09-24 02:04:06.182374: Get N started
+2023-09-24 02:04:06.182374: Get N completed, N = ['S', 'A']
+2023-09-24 02:04:06.182374: Get alphabet started
+2023-09-24 02:04:06.183375: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 02:04:06.183375: Get rules started
+2023-09-24 02:04:06.183375: Get rules completed, rules = {'S': ['aA', 'bS'], 'A': ['aA', 'a']}
+2023-09-24 02:04:27.304486: Init rules tabel started
+2023-09-24 02:04:27.445485: Init rules tabel completed
+2023-09-24 02:04:27.446485: Init alphabet tabel started
+2023-09-24 02:04:27.447486: Init alphabet tabel completed
+2023-09-24 02:04:27.447486: Init N tabel started
+2023-09-24 02:04:27.448486: Init N tabel completed
+2023-09-24 02:04:33.360230: Add row inside N table started
+2023-09-24 02:04:33.373202: Add row inside N table completed
+2023-09-24 02:04:34.821667: Add row inside N table started
+2023-09-24 02:04:34.827669: Add row inside N table completed
+2023-09-24 02:04:36.144558: Add row inside alphabet table started
+2023-09-24 02:04:36.149558: Add row inside alphabet table completed
+2023-09-24 02:04:37.101980: Add row inside alphabet table started
+2023-09-24 02:04:37.106948: Add row inside alphabet table completed
+2023-09-24 02:04:37.427676: Add row inside alphabet table started
+2023-09-24 02:04:37.431677: Add row inside alphabet table completed
+2023-09-24 02:04:38.322591: Deleting row inside table start
+2023-09-24 02:04:38.323626: Deleting row inside table completed
+2023-09-24 02:04:39.853109: Add row inside rules table started
+2023-09-24 02:04:39.858169: Add row inside rules table completed
+2023-09-24 02:04:47.367521: Add row inside rules table started
+2023-09-24 02:04:47.373519: Add row inside rules table completed
+2023-09-24 02:04:52.012531: Add row inside rules table started
+2023-09-24 02:04:52.016531: Add row inside rules table completed
+2023-09-24 02:04:56.628072: Add row inside rules table started
+2023-09-24 02:04:56.633071: Add row inside rules table completed
+2023-09-24 02:05:01.975685: generating start
+2023-09-24 02:05:01.975685: Get N started
+2023-09-24 02:05:01.976685: Get N completed, N = ['S', 'A']
+2023-09-24 02:05:01.976685: Get alphabet started
+2023-09-24 02:05:01.977683: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 02:05:01.977683: Get rules started
+2023-09-24 02:05:01.977683: Get rules completed, rules = {'S': ['aA', 'bS'], 'A': ['aA', 'a']}
+2023-09-24 02:05:25.154692: Init rules tabel started
+2023-09-24 02:05:25.296692: Init rules tabel completed
+2023-09-24 02:05:25.296692: Init alphabet tabel started
+2023-09-24 02:05:25.297692: Init alphabet tabel completed
+2023-09-24 02:05:25.297692: Init N tabel started
+2023-09-24 02:05:25.298692: Init N tabel completed
+2023-09-24 02:05:30.814427: Add row inside N table started
+2023-09-24 02:05:30.827226: Add row inside N table completed
+2023-09-24 02:05:31.143171: Add row inside N table started
+2023-09-24 02:05:31.146594: Add row inside N table completed
+2023-09-24 02:05:34.073664: Add row inside alphabet table started
+2023-09-24 02:05:34.078663: Add row inside alphabet table completed
+2023-09-24 02:05:36.123108: Add row inside alphabet table started
+2023-09-24 02:05:36.127106: Add row inside alphabet table completed
+2023-09-24 02:05:38.057573: Add row inside rules table started
+2023-09-24 02:05:38.063578: Add row inside rules table completed
+2023-09-24 02:05:42.725466: Add row inside rules table started
+2023-09-24 02:05:42.730465: Add row inside rules table completed
+2023-09-24 02:05:48.205373: Add row inside rules table started
+2023-09-24 02:05:48.209401: Add row inside rules table completed
+2023-09-24 02:05:51.188370: Add row inside rules table started
+2023-09-24 02:05:51.193370: Add row inside rules table completed
+2023-09-24 02:05:53.442689: generating start
+2023-09-24 02:05:53.443688: Get N started
+2023-09-24 02:05:53.443688: Get N completed, N = ['S', 'A']
+2023-09-24 02:05:53.443688: Get alphabet started
+2023-09-24 02:05:53.443688: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 02:05:53.444689: Get rules started
+2023-09-24 02:05:53.444689: Get rules completed, rules = {'S': ['aA', 'bS'], 'A': ['aA', 'a']}
+2023-09-24 02:06:03.894676: Init rules tabel started
+2023-09-24 02:06:04.035675: Init rules tabel completed
+2023-09-24 02:06:04.035675: Init alphabet tabel started
+2023-09-24 02:06:04.036676: Init alphabet tabel completed
+2023-09-24 02:06:04.037676: Init N tabel started
+2023-09-24 02:06:04.038677: Init N tabel completed
+2023-09-24 02:06:09.703428: Add row inside N table started
+2023-09-24 02:06:09.716078: Add row inside N table completed
+2023-09-24 02:06:14.740912: Add row inside N table started
+2023-09-24 02:06:14.745189: Add row inside N table completed
+2023-09-24 02:06:15.766842: Add row inside alphabet table started
+2023-09-24 02:06:15.772851: Add row inside alphabet table completed
+2023-09-24 02:06:16.666759: Add row inside alphabet table started
+2023-09-24 02:06:16.671354: Add row inside alphabet table completed
+2023-09-24 02:06:18.101255: Add row inside rules table started
+2023-09-24 02:06:18.107293: Add row inside rules table completed
+2023-09-24 02:06:22.377811: Add row inside rules table started
+2023-09-24 02:06:22.382816: Add row inside rules table completed
+2023-09-24 02:06:26.417842: Add row inside rules table started
+2023-09-24 02:06:26.423842: Add row inside rules table completed
+2023-09-24 02:06:33.340730: Add row inside rules table started
+2023-09-24 02:06:33.344730: Add row inside rules table completed
+2023-09-24 02:06:35.089855: generating start
+2023-09-24 02:06:35.090864: Get N started
+2023-09-24 02:06:35.090864: Get N completed, N = ['A', 'S']
+2023-09-24 02:06:35.090864: Get alphabet started
+2023-09-24 02:06:35.090864: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 02:06:35.091860: Get rules started
+2023-09-24 02:06:35.091860: Get rules completed, rules = {'S': ['aA', 'bS'], 'A': ['aA', 'a']}
+2023-09-24 02:06:39.403306: generating start
+2023-09-24 02:06:39.403306: Get N started
+2023-09-24 02:06:39.404308: Get N completed, N = ['A', 'S']
+2023-09-24 02:06:39.404308: Get alphabet started
+2023-09-24 02:06:39.404308: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 02:06:39.404308: Get rules started
+2023-09-24 02:06:39.405306: Get rules completed, rules = {'S': ['aA', 'bS'], 'A': ['aA', 'a']}
+2023-09-24 02:06:39.405306: generating completed
+2023-09-24 02:08:49.435941: Init rules tabel started
+2023-09-24 02:08:49.580940: Init rules tabel completed
+2023-09-24 02:08:49.580940: Init alphabet tabel started
+2023-09-24 02:08:49.581941: Init alphabet tabel completed
+2023-09-24 02:08:49.581941: Init N tabel started
+2023-09-24 02:08:49.582941: Init N tabel completed
+2023-09-24 02:09:52.139520: Init rules tabel started
+2023-09-24 02:09:52.281545: Init rules tabel completed
+2023-09-24 02:09:52.281545: Init alphabet tabel started
+2023-09-24 02:09:52.282521: Init alphabet tabel completed
+2023-09-24 02:09:52.283523: Init N tabel started
+2023-09-24 02:09:52.283523: Init N tabel completed
+2023-09-24 02:09:54.142487: Add row inside rules table started
+2023-09-24 02:09:54.155486: Add row inside rules table completed
+2023-09-24 02:09:54.454231: Add row inside alphabet table started
+2023-09-24 02:09:54.460229: Add row inside alphabet table completed
+2023-09-24 02:09:54.996951: Add row inside N table started
+2023-09-24 02:09:55.000951: Add row inside N table completed
+2023-09-24 02:10:13.326894: Add row inside N table started
+2023-09-24 02:10:13.330894: Add row inside N table completed
+2023-09-24 02:10:14.386185: Add row inside N table started
+2023-09-24 02:10:14.391453: Add row inside N table completed
+2023-09-24 02:10:15.858089: Add row inside N table started
+2023-09-24 02:10:15.863087: Add row inside N table completed
+2023-09-24 02:10:18.192801: Add row inside N table started
+2023-09-24 02:10:18.196801: Add row inside N table completed
+2023-09-24 02:10:22.237875: Add row inside alphabet table started
+2023-09-24 02:10:22.242874: Add row inside alphabet table completed
+2023-09-24 02:10:43.051432: Add row inside rules table started
+2023-09-24 02:10:43.055432: Add row inside rules table completed
+2023-09-24 02:10:49.799019: Add row inside rules table started
+2023-09-24 02:10:49.804016: Add row inside rules table completed
+2023-09-24 02:10:58.145081: Add row inside rules table started
+2023-09-24 02:10:58.149086: Add row inside rules table completed
+2023-09-24 02:11:01.422346: Add row inside rules table started
+2023-09-24 02:11:01.427345: Add row inside rules table completed
+2023-09-24 02:19:15.011810: Add row inside rules table started
+2023-09-24 02:19:15.018809: Add row inside rules table completed
+2023-09-24 02:19:29.733304: Add row inside rules table started
+2023-09-24 02:19:29.738304: Add row inside rules table completed
+2023-09-24 02:19:34.586223: Add row inside rules table started
+2023-09-24 02:19:34.591228: Add row inside rules table completed
+2023-09-24 02:19:43.047170: Add row inside rules table started
+2023-09-24 02:19:43.052170: Add row inside rules table completed
+2023-09-24 02:19:47.174205: Add row inside rules table started
+2023-09-24 02:19:47.179205: Add row inside rules table completed
+2023-09-24 02:19:54.090833: Add row inside rules table started
+2023-09-24 02:19:54.095867: Add row inside rules table completed
+2023-09-24 02:20:03.052643: Add row inside rules table started
+2023-09-24 02:20:03.057344: Add row inside rules table completed
+2023-09-24 02:20:06.218113: Deleting row inside table start
+2023-09-24 02:20:06.219113: Deleting row inside table completed
+2023-09-24 02:20:17.595477: generating start
+2023-09-24 02:20:17.596510: Get N started
+2023-09-24 02:20:17.596510: Get N completed, N = ['S', 'A', 'B', 'C', 'D']
+2023-09-24 02:20:17.597478: Get alphabet started
+2023-09-24 02:20:17.597478: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 02:20:17.597478: Get rules started
+2023-09-24 02:20:17.598478: Get rules completed, rules = {'S': ['CD'], 'C': ['aCA', 'bCB', ' '], 'D': [' '], 'AD': ['aD'], 'BD': ['bD'], 'Aa': ['aA'], 'Ab': ['bA'], 'Ba': ['aB'], 'Bd': ['dB']}
+2023-09-24 02:20:17.602474: generating completed: {'b b ', 'a a '}
+2023-09-24 02:22:25.671449: Init rules tabel started
+2023-09-24 02:22:25.816451: Init rules tabel completed
+2023-09-24 02:22:25.816451: Init alphabet tabel started
+2023-09-24 02:22:25.817452: Init alphabet tabel completed
+2023-09-24 02:22:25.817452: Init N tabel started
+2023-09-24 02:22:25.818454: Init N tabel completed
+2023-09-24 02:22:46.858971: Add row inside N table started
+2023-09-24 02:22:46.872223: Add row inside N table completed
+2023-09-24 02:22:51.060360: Add row inside N table started
+2023-09-24 02:22:51.065359: Add row inside N table completed
+2023-09-24 02:22:51.983276: Add row inside N table started
+2023-09-24 02:22:51.988274: Add row inside N table completed
+2023-09-24 02:22:54.056546: Add row inside N table started
+2023-09-24 02:22:54.062552: Add row inside N table completed
+2023-09-24 02:22:56.112792: Add row inside N table started
+2023-09-24 02:22:56.117792: Add row inside N table completed
+2023-09-24 02:22:57.811605: Add row inside alphabet table started
+2023-09-24 02:22:57.815605: Add row inside alphabet table completed
+2023-09-24 02:22:58.800763: Add row inside alphabet table started
+2023-09-24 02:22:58.805158: Add row inside alphabet table completed
+2023-09-24 02:23:00.802729: Add row inside rules table started
+2023-09-24 02:23:00.807728: Add row inside rules table completed
+2023-09-24 02:23:04.373833: Add row inside rules table started
+2023-09-24 02:23:04.377803: Add row inside rules table completed
+2023-09-24 02:23:57.323131: Add row inside rules table started
+2023-09-24 02:23:57.328130: Add row inside rules table completed
+2023-09-24 02:24:03.970152: Add row inside rules table started
+2023-09-24 02:24:03.975189: Add row inside rules table completed
+2023-09-24 02:24:09.262113: Add row inside rules table started
+2023-09-24 02:24:09.266111: Add row inside rules table completed
+2023-09-24 02:24:13.845818: Add row inside rules table started
+2023-09-24 02:24:13.851825: Add row inside rules table completed
+2023-09-24 02:24:17.763721: Add row inside rules table started
+2023-09-24 02:24:17.767720: Add row inside rules table completed
+2023-09-24 02:24:21.668713: Add row inside rules table started
+2023-09-24 02:24:21.673165: Add row inside rules table completed
+2023-09-24 02:25:19.876632: Add row inside rules table started
+2023-09-24 02:25:19.881631: Add row inside rules table completed
+2023-09-24 02:25:25.155584: Add row inside rules table started
+2023-09-24 02:25:25.160001: Add row inside rules table completed
+2023-09-24 02:25:27.051574: Add row inside rules table started
+2023-09-24 02:25:27.055574: Add row inside rules table completed
+2023-09-24 02:25:31.248032: generating start
+2023-09-24 02:25:31.249032: Get N started
+2023-09-24 02:25:31.249032: Get N completed, N = ['S', 'A', 'B', 'D', 'C']
+2023-09-24 02:25:31.249032: Get alphabet started
+2023-09-24 02:25:31.249032: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 02:25:31.250031: Get rules started
+2023-09-24 02:27:09.927609: Init rules tabel started
+2023-09-24 02:27:10.068608: Init rules tabel completed
+2023-09-24 02:27:10.069609: Init alphabet tabel started
+2023-09-24 02:27:10.070608: Init alphabet tabel completed
+2023-09-24 02:27:10.070608: Init N tabel started
+2023-09-24 02:27:10.071610: Init N tabel completed
+2023-09-24 02:27:19.346966: Add row inside N table started
+2023-09-24 02:27:19.359456: Add row inside N table completed
+2023-09-24 02:27:21.877386: Add row inside N table started
+2023-09-24 02:27:21.882384: Add row inside N table completed
+2023-09-24 02:27:22.755348: Add row inside N table started
+2023-09-24 02:27:22.761358: Add row inside N table completed
+2023-09-24 02:27:24.085623: Add row inside N table started
+2023-09-24 02:27:24.089621: Add row inside N table completed
+2023-09-24 02:27:25.766154: Add row inside N table started
+2023-09-24 02:27:25.772151: Add row inside N table completed
+2023-09-24 02:27:26.752522: Add row inside N table started
+2023-09-24 02:27:26.757353: Add row inside N table completed
+2023-09-24 02:27:28.361408: Deleting row inside table start
+2023-09-24 02:27:28.362439: Deleting row inside table completed
+2023-09-24 02:27:31.216112: Add row inside alphabet table started
+2023-09-24 02:27:31.221117: Add row inside alphabet table completed
+2023-09-24 02:27:32.042516: Add row inside alphabet table started
+2023-09-24 02:27:32.047520: Add row inside alphabet table completed
+2023-09-24 02:27:33.687590: Add row inside rules table started
+2023-09-24 02:27:33.692593: Add row inside rules table completed
+2023-09-24 02:27:36.326184: Add row inside rules table started
+2023-09-24 02:27:36.330187: Add row inside rules table completed
+2023-09-24 02:27:43.030085: Add row inside rules table started
+2023-09-24 02:27:43.035085: Add row inside rules table completed
+2023-09-24 02:27:48.546205: Add row inside rules table started
+2023-09-24 02:27:48.553203: Add row inside rules table completed
+2023-09-24 02:27:52.569034: Add row inside rules table started
+2023-09-24 02:27:52.574039: Add row inside rules table completed
+2023-09-24 02:28:01.219912: Add row inside rules table started
+2023-09-24 02:28:01.223911: Add row inside rules table completed
+2023-09-24 02:28:05.244937: Add row inside rules table started
+2023-09-24 02:28:05.248942: Add row inside rules table completed
+2023-09-24 02:28:11.214368: Add row inside rules table started
+2023-09-24 02:28:11.219368: Add row inside rules table completed
+2023-09-24 02:28:16.644764: Add row inside rules table started
+2023-09-24 02:28:16.650765: Add row inside rules table completed
+2023-09-24 02:28:22.088315: Add row inside rules table started
+2023-09-24 02:28:22.093316: Add row inside rules table completed
+2023-09-24 02:28:23.863943: Add row inside rules table started
+2023-09-24 02:28:23.867943: Add row inside rules table completed
+2023-09-24 02:28:27.239962: generating start
+2023-09-24 02:28:27.240960: Get N started
+2023-09-24 02:28:27.240960: Get N completed, N = ['S', 'A', 'B', 'C', 'D']
+2023-09-24 02:28:27.240960: Get alphabet started
+2023-09-24 02:28:27.241959: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 02:28:27.241959: Get rules started
+2023-09-24 02:29:26.440409: Init rules tabel started
+2023-09-24 02:29:26.583408: Init rules tabel completed
+2023-09-24 02:29:26.583408: Init alphabet tabel started
+2023-09-24 02:29:26.584410: Init alphabet tabel completed
+2023-09-24 02:29:26.584410: Init N tabel started
+2023-09-24 02:29:26.585408: Init N tabel completed
+2023-09-24 02:30:23.509436: Add row inside N table started
+2023-09-24 02:30:23.521436: Add row inside N table completed
+2023-09-24 02:30:26.554097: Add row inside N table started
+2023-09-24 02:30:26.558096: Add row inside N table completed
+2023-09-24 02:30:28.012264: Add row inside N table started
+2023-09-24 02:30:28.016876: Add row inside N table completed
+2023-09-24 02:30:28.957386: Add row inside N table started
+2023-09-24 02:30:28.962386: Add row inside N table completed
+2023-09-24 02:30:32.464861: Add row inside N table started
+2023-09-24 02:30:32.469861: Add row inside N table completed
+2023-09-24 02:30:34.159149: Add row inside alphabet table started
+2023-09-24 02:30:34.163148: Add row inside alphabet table completed
+2023-09-24 02:30:35.125416: Add row inside alphabet table started
+2023-09-24 02:30:35.129416: Add row inside alphabet table completed
+2023-09-24 02:30:35.449455: Add row inside alphabet table started
+2023-09-24 02:30:35.455452: Add row inside alphabet table completed
+2023-09-24 02:30:36.985292: Deleting row inside table start
+2023-09-24 02:30:36.985292: Deleting row inside table completed
+2023-09-24 02:30:38.468091: Add row inside rules table started
+2023-09-24 02:30:38.473096: Add row inside rules table completed
+2023-09-24 02:30:40.829601: Add row inside rules table started
+2023-09-24 02:30:40.834598: Add row inside rules table completed
+2023-09-24 02:30:46.790541: Add row inside rules table started
+2023-09-24 02:30:46.794541: Add row inside rules table completed
+2023-09-24 02:30:53.233644: Add row inside rules table started
+2023-09-24 02:30:53.238644: Add row inside rules table completed
+2023-09-24 02:30:59.120119: Add row inside rules table started
+2023-09-24 02:30:59.125118: Add row inside rules table completed
+2023-09-24 02:31:04.883421: Add row inside rules table started
+2023-09-24 02:31:04.888633: Add row inside rules table completed
+2023-09-24 02:31:08.219653: Add row inside rules table started
+2023-09-24 02:31:08.224651: Add row inside rules table completed
+2023-09-24 02:31:15.425667: Add row inside rules table started
+2023-09-24 02:31:15.430664: Add row inside rules table completed
+2023-09-24 02:31:22.205982: Add row inside rules table started
+2023-09-24 02:31:22.210982: Add row inside rules table completed
+2023-09-24 02:31:47.997608: Add row inside rules table started
+2023-09-24 02:31:48.001611: Add row inside rules table completed
+2023-09-24 02:31:49.731624: Add row inside rules table started
+2023-09-24 02:31:49.736622: Add row inside rules table completed
+2023-09-24 02:31:53.078262: generating start
+2023-09-24 02:31:53.079270: Get N started
+2023-09-24 02:31:53.079270: Get N completed, N = ['S', 'A', 'B', 'C', 'D']
+2023-09-24 02:31:53.079270: Get alphabet started
+2023-09-24 02:31:53.080268: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 02:31:53.080268: Get rules started
+2023-09-24 02:31:53.080268: Get rules completed, rules = {'S': ['CD'], 'C': ['aCA', 'bCB', ''], 'AD': ['aD'], 'BD': ['bD'], 'Aa': ['aA'], 'Ab': ['bA'], 'Ba': ['aB'], 'Bb': ['bB'], 'D': ['']}
+2023-09-24 02:31:53.084267: generating completed: {'', 'bb', 'aa'}
+2023-09-24 02:33:08.617695: generating start
+2023-09-24 02:33:08.618702: Get N started
+2023-09-24 02:33:08.618702: Get N completed, N = ['S', 'A', 'B', 'C', 'D']
+2023-09-24 02:33:08.619701: Get alphabet started
+2023-09-24 02:33:08.619701: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 02:33:08.619701: Get rules started
+2023-09-24 02:33:08.620701: Get rules completed, rules = {'S': ['CD'], 'C': ['aCA', 'bCB', ''], 'AD': ['aD'], 'BD': ['bD'], 'Aa': ['aA'], 'Ab': ['bA'], 'Ba': ['aB'], 'Bb': ['bB'], 'D': ['']}
+2023-09-24 02:33:08.632699: generating completed: {'', 'bb', 'aa'}
+2023-09-24 02:33:32.053531: generating start
+2023-09-24 02:33:32.054569: Get N started
+2023-09-24 02:33:32.054569: Get N completed, N = ['S', 'A', 'B', 'C', 'D']
+2023-09-24 02:33:32.055548: Get alphabet started
+2023-09-24 02:33:32.055548: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 02:33:32.055548: Get rules started
+2023-09-24 02:33:32.056567: Get rules completed, rules = {'S': ['CD'], 'C': ['aCA', 'bCB', ''], 'AD': ['aD'], 'BD': ['bD'], 'Aa': ['aA'], 'Ab': ['bA'], 'Ba': ['aB'], 'Bb': ['bB'], 'D': ['']}
+2023-09-24 02:33:32.184565: generating completed: {'', 'bbbb', 'aa', 'abab', 'bb', 'aaaa', 'baba'}
+2023-09-24 02:34:19.615336: Init rules tabel started
+2023-09-24 02:34:19.757335: Init rules tabel completed
+2023-09-24 02:34:19.757335: Init alphabet tabel started
+2023-09-24 02:34:19.758336: Init alphabet tabel completed
+2023-09-24 02:34:19.759336: Init N tabel started
+2023-09-24 02:34:19.760336: Init N tabel completed
+2023-09-24 02:34:20.659055: Add row inside rules table started
+2023-09-24 02:34:20.691055: Add row inside rules table completed
+2023-09-24 02:34:22.933770: Add row inside alphabet table started
+2023-09-24 02:34:22.939839: Add row inside alphabet table completed
+2023-09-24 02:34:24.378151: Add row inside alphabet table started
+2023-09-24 02:34:24.383150: Add row inside alphabet table completed
+2023-09-24 02:34:26.047265: Add row inside alphabet table started
+2023-09-24 02:34:26.052264: Add row inside alphabet table completed
+2023-09-24 02:34:26.458599: Deleting row inside table start
+2023-09-24 02:34:26.459599: Deleting row inside table completed
+2023-09-24 02:34:26.840766: Add row inside N table started
+2023-09-24 02:34:26.846766: Add row inside N table completed
+2023-09-24 02:34:29.341484: Add row inside N table started
+2023-09-24 02:34:29.345500: Add row inside N table completed
+2023-09-24 02:34:30.305101: Add row inside N table started
+2023-09-24 02:34:30.311099: Add row inside N table completed
+2023-09-24 02:34:31.698634: Add row inside N table started
+2023-09-24 02:34:31.704639: Add row inside N table completed
+2023-09-24 02:34:32.512487: Add row inside N table started
+2023-09-24 02:34:32.517486: Add row inside N table completed
+2023-09-24 02:34:33.898586: Add row inside N table started
+2023-09-24 02:34:33.904585: Add row inside N table completed
+2023-09-24 02:34:34.440360: Deleting row inside table start
+2023-09-24 02:34:34.441360: Deleting row inside table completed
+2023-09-24 02:35:10.167013: Add row inside rules table started
+2023-09-24 02:35:10.172144: Add row inside rules table completed
+2023-09-24 02:35:13.474357: Add row inside rules table started
+2023-09-24 02:35:13.478363: Add row inside rules table completed
+2023-09-24 02:35:16.915194: Add row inside rules table started
+2023-09-24 02:35:16.921192: Add row inside rules table completed
+2023-09-24 02:35:27.368251: Add row inside rules table started
+2023-09-24 02:35:27.372252: Add row inside rules table completed
+2023-09-24 02:35:31.190593: Add row inside rules table started
+2023-09-24 02:35:31.195592: Add row inside rules table completed
+2023-09-24 02:35:36.329176: Add row inside rules table started
+2023-09-24 02:35:36.334168: Add row inside rules table completed
+2023-09-24 02:35:59.533079: Add row inside rules table started
+2023-09-24 02:35:59.538304: Add row inside rules table completed
+2023-09-24 02:36:11.327406: Add row inside rules table started
+2023-09-24 02:36:11.332412: Add row inside rules table completed
+2023-09-24 02:36:16.403036: Add row inside rules table started
+2023-09-24 02:36:16.407036: Add row inside rules table completed
+2023-09-24 02:36:18.753009: Add row inside rules table started
+2023-09-24 02:36:18.758040: Add row inside rules table completed
+2023-09-24 02:36:20.968213: generating start
+2023-09-24 02:36:20.969219: Get N started
+2023-09-24 02:36:20.969219: Get N completed, N = ['S', 'A', 'B', 'C', 'D']
+2023-09-24 02:36:20.969219: Get alphabet started
+2023-09-24 02:36:20.969219: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 02:36:20.970221: Get rules started
+2023-09-24 02:36:20.970221: Get rules completed, rules = {'S': ['CD'], 'C': ['aCA', 'bCB', ''], 'AD': ['aD'], 'BD': ['bD'], 'Aa': ['aA'], 'Ab': ['bA'], 'Ba': ['aB'], 'Bb': ['bB'], 'D': ['']}
+2023-09-24 02:36:26.058776: generating start
+2023-09-24 02:36:26.058776: Get N started
+2023-09-24 02:36:26.058776: Get N completed, N = ['S', 'A', 'B', 'C', 'D']
+2023-09-24 02:36:26.059776: Get alphabet started
+2023-09-24 02:36:26.059776: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 02:36:26.059776: Get rules started
+2023-09-24 02:36:26.059776: Get rules completed, rules = {'S': ['CD'], 'C': ['aCA', 'bCB', ''], 'AD': ['aD'], 'BD': ['bD'], 'Aa': ['aA'], 'Ab': ['bA'], 'Ba': ['aB'], 'Bb': ['bB'], 'D': ['']}
+2023-09-24 02:36:26.516776: generating completed: {''}
+2023-09-24 02:37:17.909807: generating start
+2023-09-24 02:37:17.910825: Get N started
+2023-09-24 02:37:17.910825: Get N completed, N = ['S', 'A', 'B', 'C', 'D']
+2023-09-24 02:37:17.910825: Get alphabet started
+2023-09-24 02:37:17.911812: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 02:37:17.911812: Get rules started
+2023-09-24 02:37:17.911812: Get rules completed, rules = {'S': ['CD'], 'C': ['aCA', 'bCB', ''], 'AD': ['aD'], 'BD': ['bD'], 'Aa': ['aA'], 'Ab': ['bA'], 'Ba': ['aB'], 'Bb': ['bB'], 'D': ['']}
+2023-09-24 02:37:17.922842: generating completed: {'', 'bb', 'aa'}
+2023-09-24 02:38:53.989608: generating start
+2023-09-24 02:38:53.990605: Get N started
+2023-09-24 02:38:53.990605: Get N completed, N = ['S', 'A', 'B', 'C', 'D']
+2023-09-24 02:38:53.990605: Get alphabet started
+2023-09-24 02:38:53.991605: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 02:38:53.991605: Get rules started
+2023-09-24 02:38:53.991605: Get rules completed, rules = {'S': ['CD'], 'C': ['aCA', 'bCB', ''], 'AD': ['aD'], 'BD': ['bD'], 'Aa': ['aA'], 'Ab': ['bA'], 'Ba': ['aB'], 'Bb': ['bB'], 'D': ['']}
+2023-09-24 02:38:54.457605: generating completed: {'', 'bb', 'aa'}
+2023-09-24 02:57:32.619210: Init rules tabel started
+2023-09-24 02:57:32.761210: Init rules tabel completed
+2023-09-24 02:57:32.761210: Init alphabet tabel started
+2023-09-24 02:57:32.762210: Init alphabet tabel completed
+2023-09-24 02:57:32.763210: Init N tabel started
+2023-09-24 02:57:32.764210: Init N tabel completed
+2023-09-24 02:57:47.219724: Add row inside N table started
+2023-09-24 02:57:47.232722: Add row inside N table completed
+2023-09-24 02:57:49.106960: Add row inside N table started
+2023-09-24 02:57:49.111958: Add row inside N table completed
+2023-09-24 02:57:51.362642: Add row inside N table started
+2023-09-24 02:57:51.366641: Add row inside N table completed
+2023-09-24 02:57:52.679887: Add row inside N table started
+2023-09-24 02:57:52.683887: Add row inside N table completed
+2023-09-24 02:57:54.171492: Add row inside N table started
+2023-09-24 02:57:54.178497: Add row inside N table completed
+2023-09-24 02:57:57.371450: Add row inside N table started
+2023-09-24 02:57:57.376448: Add row inside N table completed
+2023-09-24 02:57:57.774143: Deleting row inside table start
+2023-09-24 02:57:57.774143: Deleting row inside table completed
+2023-09-24 02:57:58.385026: Add row inside alphabet table started
+2023-09-24 02:57:58.389320: Add row inside alphabet table completed
+2023-09-24 02:57:59.679772: Add row inside alphabet table started
+2023-09-24 02:57:59.685772: Add row inside alphabet table completed
+2023-09-24 02:58:01.343026: Add row inside alphabet table started
+2023-09-24 02:58:01.347026: Add row inside alphabet table completed
+2023-09-24 02:58:01.749419: Deleting row inside table start
+2023-09-24 02:58:01.749419: Deleting row inside table completed
+2023-09-24 02:58:02.253703: Add row inside rules table started
+2023-09-24 02:58:02.259773: Add row inside rules table completed
+2023-09-24 02:58:04.904320: Add row inside rules table started
+2023-09-24 02:58:04.909326: Add row inside rules table completed
+2023-09-24 02:58:12.447228: Add row inside rules table started
+2023-09-24 02:58:12.451334: Add row inside rules table completed
+2023-09-24 02:58:25.807719: Add row inside rules table started
+2023-09-24 02:58:25.812218: Add row inside rules table completed
+2023-09-24 02:58:30.432947: Add row inside rules table started
+2023-09-24 02:58:30.436977: Add row inside rules table completed
+2023-09-24 02:58:34.127997: Add row inside rules table started
+2023-09-24 02:58:34.132742: Add row inside rules table completed
+2023-09-24 02:58:38.341815: Add row inside rules table started
+2023-09-24 02:58:38.346815: Add row inside rules table completed
+2023-09-24 02:58:43.292813: Add row inside rules table started
+2023-09-24 02:58:43.297813: Add row inside rules table completed
+2023-09-24 02:58:48.047309: Add row inside rules table started
+2023-09-24 02:58:48.052306: Add row inside rules table completed
+2023-09-24 02:58:54.614013: Add row inside rules table started
+2023-09-24 02:58:54.618047: Add row inside rules table completed
+2023-09-24 02:58:59.329703: Add row inside rules table started
+2023-09-24 02:58:59.333703: Add row inside rules table completed
+2023-09-24 02:59:06.159897: generating start
+2023-09-24 02:59:06.159897: Get N started
+2023-09-24 02:59:06.160896: Get N completed, N = ['S', 'A', 'B', 'C', 'D']
+2023-09-24 02:59:06.160896: Get alphabet started
+2023-09-24 02:59:06.160896: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 02:59:06.161895: Get rules started
+2023-09-24 02:59:06.161895: Get rules completed, rules = {'S': ['CD'], 'C': ['aCA', 'bCB', ''], 'AD': ['aD'], 'BD': ['bD'], 'Aa': ['aA'], 'Ab': ['bA'], 'Ba': ['aB'], 'Bb': ['bB'], 'D': ['']}
+2023-09-24 02:59:06.326924: generating completed: {''}
+2023-09-24 03:02:06.562630: Init rules tabel started
+2023-09-24 03:02:06.702503: Init rules tabel completed
+2023-09-24 03:02:06.703502: Init alphabet tabel started
+2023-09-24 03:02:06.704502: Init alphabet tabel completed
+2023-09-24 03:02:06.704502: Init N tabel started
+2023-09-24 03:02:06.705502: Init N tabel completed
+2023-09-24 03:06:07.514904: Add row inside N table started
+2023-09-24 03:06:07.527901: Add row inside N table completed
+2023-09-24 03:06:08.320257: Add row inside N table started
+2023-09-24 03:06:08.325900: Add row inside N table completed
+2023-09-24 03:06:08.610955: Add row inside N table started
+2023-09-24 03:06:08.614955: Add row inside N table completed
+2023-09-24 03:06:08.865564: Add row inside N table started
+2023-09-24 03:06:08.870599: Add row inside N table completed
+2023-09-24 03:06:09.122225: Add row inside N table started
+2023-09-24 03:06:09.126254: Add row inside N table completed
+2023-09-24 03:06:17.855948: Add row inside alphabet table started
+2023-09-24 03:06:17.860946: Add row inside alphabet table completed
+2023-09-24 03:06:20.135198: Add row inside N table started
+2023-09-24 03:06:20.141230: Add row inside N table completed
+2023-09-24 03:06:20.565650: Deleting row inside table start
+2023-09-24 03:06:20.565650: Deleting row inside table completed
+2023-09-24 03:06:25.412034: Add row inside alphabet table started
+2023-09-24 03:06:25.416342: Add row inside alphabet table completed
+2023-09-24 03:06:26.521561: Add row inside rules table started
+2023-09-24 03:06:26.525567: Add row inside rules table completed
+2023-09-24 03:06:28.349782: Add row inside alphabet table started
+2023-09-24 03:06:28.355071: Add row inside alphabet table completed
+2023-09-24 03:06:28.723325: Deleting row inside table start
+2023-09-24 03:06:28.724326: Deleting row inside table completed
+2023-09-24 03:06:51.497458: Add row inside rules table started
+2023-09-24 03:06:51.502463: Add row inside rules table completed
+2023-09-24 03:06:58.363643: Add row inside rules table started
+2023-09-24 03:06:58.368642: Add row inside rules table completed
+2023-09-24 03:07:01.539606: Add row inside rules table started
+2023-09-24 03:07:01.544607: Add row inside rules table completed
+2023-09-24 03:07:08.002234: Add row inside rules table started
+2023-09-24 03:07:08.007233: Add row inside rules table completed
+2023-09-24 03:07:10.669092: Add row inside rules table started
+2023-09-24 03:07:10.675124: Add row inside rules table completed
+2023-09-24 03:07:16.253559: Add row inside rules table started
+2023-09-24 03:07:16.258559: Add row inside rules table completed
+2023-09-24 03:07:22.121882: Add row inside rules table started
+2023-09-24 03:07:22.126886: Add row inside rules table completed
+2023-09-24 03:07:29.240125: Add row inside rules table started
+2023-09-24 03:07:29.244125: Add row inside rules table completed
+2023-09-24 03:07:34.587010: Add row inside rules table started
+2023-09-24 03:07:34.594009: Add row inside rules table completed
+2023-09-24 03:07:37.470551: Add row inside rules table started
+2023-09-24 03:07:37.475552: Add row inside rules table completed
+2023-09-24 03:07:41.485110: generating start
+2023-09-24 03:07:41.486111: Get N started
+2023-09-24 03:07:41.486111: Get N completed, N = ['S', 'A', 'B', 'C', 'D']
+2023-09-24 03:07:41.486111: Get alphabet started
+2023-09-24 03:07:41.486111: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 03:07:41.487110: Get rules started
+2023-09-24 03:07:41.487110: Get rules completed, rules = {'S': ['CD'], 'C': ['aCA', 'bCB', ''], 'AD': ['aD'], 'BD': ['bD'], 'Aa': ['aA'], 'Ab': ['bA'], 'Ba': ['aB'], 'Bb': ['bB'], 'D': ['']}
+2023-09-24 03:07:42.103147: generating completed: {'bbbb', '', 'baba', 'aaaa', 'bb', 'aa', 'abab'}
+2023-09-24 03:08:04.089430: generating start
+2023-09-24 03:08:04.089430: Get N started
+2023-09-24 03:08:04.090431: Get N completed, N = ['S', 'A', 'B', 'C', 'D']
+2023-09-24 03:08:04.090431: Get alphabet started
+2023-09-24 03:08:04.090431: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 03:08:04.091431: Get rules started
+2023-09-24 03:08:04.091431: Get rules completed, rules = {'S': ['CD'], 'C': ['aCA', 'bCB', ''], 'AD': ['aD'], 'BD': ['bD'], 'Aa': ['aA'], 'Ab': ['bA'], 'Ba': ['aB'], 'Bb': ['bB'], 'D': ['']}
+2023-09-24 12:51:54.413717: Init rules tabel started
+2023-09-24 12:51:54.587076: Init rules tabel completed
+2023-09-24 12:51:54.587076: Init alphabet tabel started
+2023-09-24 12:51:54.588077: Init alphabet tabel completed
+2023-09-24 12:51:54.588077: Init N tabel started
+2023-09-24 12:51:54.589076: Init N tabel completed
+2023-09-24 12:52:01.540924: Add row inside rules table started
+2023-09-24 12:52:01.572273: Add row inside rules table completed
+2023-09-24 12:52:02.062402: Add row inside alphabet table started
+2023-09-24 12:52:02.066401: Add row inside alphabet table completed
+2023-09-24 12:52:02.591402: Add row inside N table started
+2023-09-24 12:52:02.595402: Add row inside N table completed
+2023-09-24 12:52:02.983556: Add row inside N table started
+2023-09-24 12:52:02.987557: Add row inside N table completed
+2023-09-24 12:52:37.828686: Add row inside N table started
+2023-09-24 12:52:37.832691: Add row inside N table completed
+2023-09-24 12:52:38.303399: Deleting row inside table start
+2023-09-24 12:52:38.304399: Deleting row inside table completed
+2023-09-24 12:52:44.890160: Add row inside alphabet table started
+2023-09-24 12:52:44.894160: Add row inside alphabet table completed
+2023-09-24 12:52:46.220629: Add row inside rules table started
+2023-09-24 12:52:46.224628: Add row inside rules table completed
+2023-09-24 12:52:47.535375: Add row inside alphabet table started
+2023-09-24 12:52:47.540375: Add row inside alphabet table completed
+2023-09-24 12:52:48.325272: Deleting row inside table start
+2023-09-24 12:52:48.326269: Deleting row inside table completed
+2023-09-24 12:53:07.307966: Add row inside rules table started
+2023-09-24 12:53:07.311966: Add row inside rules table completed
+2023-09-24 12:53:10.248199: Add row inside rules table started
+2023-09-24 12:53:10.252200: Add row inside rules table completed
+2023-09-24 12:53:16.621990: Add row inside rules table started
+2023-09-24 12:53:16.625994: Add row inside rules table completed
+2023-09-24 12:53:17.023345: Deleting row inside table start
+2023-09-24 12:53:17.024351: Deleting row inside table completed
+2023-09-24 12:53:41.136200: generating start
+2023-09-24 12:53:41.137200: Get N started
+2023-09-24 12:53:41.137200: Get N completed, N = ['S', 'A']
+2023-09-24 12:53:41.137200: Get alphabet started
+2023-09-24 12:53:41.138200: Get alphabet completed, alphabet = ['a', 'b']
+2023-09-24 12:53:41.138200: Get rules started
+2023-09-24 12:53:41.138200: Get rules completed, rules = {'S': ['aA', 'bS'], 'A': ['aA', 'a']}
+2023-09-24 12:53:41.139201: generating completed: {'bbaaa', 'aaa', 'aaaa', 'aa', 'bbbaa', 'baaaa', 'aaaaa', 'baaa', 'bbaa', 'baa'}
+2023-09-24 12:55:31.847197: Deleting row inside table start
+2023-09-24 12:55:31.848197: Deleting row inside table completed
+2023-09-24 12:55:32.040615: Deleting row inside table start
+2023-09-24 12:55:32.041617: Deleting row inside table completed
+2023-09-24 12:55:32.206324: Deleting row inside table start
+2023-09-24 12:55:32.207368: Deleting row inside table completed
+2023-09-24 12:55:32.331180: Deleting row inside table start
+2023-09-24 12:55:32.331180: Deleting row inside table completed
+2023-09-24 12:55:32.932858: Deleting row inside table start
+2023-09-24 12:55:32.932858: Deleting row inside table completed
+2023-09-24 12:55:33.085585: Deleting row inside table start
+2023-09-24 12:55:33.085585: Deleting row inside table completed
+2023-09-24 12:55:33.892584: Deleting row inside table start
+2023-09-24 12:55:33.893585: Deleting row inside table completed
+2023-09-24 12:55:34.092548: Deleting row inside table start
+2023-09-24 12:55:34.092548: Deleting row inside table completed
+2023-09-24 12:55:35.778339: generating start
+2023-09-24 12:55:35.778339: Get N started
+2023-09-24 12:55:35.779340: Get N completed, N = []
+2023-09-24 12:55:39.688581: Add row inside N table started
+2023-09-24 12:55:39.692580: Add row inside N table completed
+2023-09-24 12:55:46.149298: Add row inside alphabet table started
+2023-09-24 12:55:46.153299: Add row inside alphabet table completed
+2023-09-24 12:55:47.396475: generating start
+2023-09-24 12:55:47.396475: Get N started
+2023-09-24 12:55:47.396475: Get N completed, N = ['S']
+2023-09-24 12:55:47.397477: Get alphabet started
+2023-09-24 12:55:47.397477: Get alphabet completed, alphabet = []
+2023-09-24 12:55:51.472297: generating start
+2023-09-24 12:55:51.472297: Get N started
+2023-09-24 12:55:51.472297: Get N completed, N = ['S']
+2023-09-24 12:55:51.472297: Get alphabet started
+2023-09-24 12:55:51.473297: Get alphabet completed, alphabet = ['s']
+2023-09-24 12:55:51.473297: Get rules started
+2023-09-24 12:55:51.473297: Get rules completed, rules = {}
+2023-09-24 12:55:54.075981: Add row inside rules table started
+2023-09-24 12:55:54.079981: Add row inside rules table completed
+2023-09-24 12:56:12.279472: generating start
+2023-09-24 12:56:12.280477: Get N started
+2023-09-24 12:56:12.280477: Get N completed, N = ['S']
+2023-09-24 12:56:12.280477: Get alphabet started
+2023-09-24 12:56:12.281477: Get alphabet completed, alphabet = ['s']
+2023-09-24 12:56:12.281477: Get rules started
+2023-09-24 12:56:12.281477: Get rules completed, rules = {'S': ['']}
+2023-09-24 12:56:19.801154: generating start
+2023-09-24 12:56:19.802154: Get N started
+2023-09-24 12:56:19.802154: Get N completed, N = ['S']
+2023-09-24 12:56:19.802154: Get alphabet started
+2023-09-24 12:56:19.803154: Get alphabet completed, alphabet = ['s']
+2023-09-24 12:56:19.803154: Get rules started
+2023-09-24 12:56:19.803154: Get rules completed, rules = {'S': ['']}
+2023-09-24 12:56:19.803154: generating completed: {'baaaaA', '', 'baA', 'aaaaaA', 'baaaA', 'aaaA', 'bbbaa', 'bbaA', 'aaaaa', 'aA', 'baaa', 'bbbbaA', 'bbbaA', 'baaA', 'aaA', 'bbaaA', 'aaaaA', 'aa', 'bbaaaA', 'bbaaa', 'aaa', 'aaaa', 'bbbaaA', 'baaaa', 'bbaa', 'baa'}
+2023-09-24 12:58:02.691260: Init rules tabel started
+2023-09-24 12:58:02.836259: Init rules tabel completed
+2023-09-24 12:58:02.837260: Init alphabet tabel started
+2023-09-24 12:58:02.838260: Init alphabet tabel completed
+2023-09-24 12:58:02.838260: Init N tabel started
+2023-09-24 12:58:02.840259: Init N tabel completed
+2023-09-24 12:58:20.887130: Add row inside N table started
+2023-09-24 12:58:20.899130: Add row inside N table completed
+2023-09-24 13:03:31.288674: Init rules tabel started
+2023-09-24 13:03:31.437675: Init rules tabel completed
+2023-09-24 13:03:31.437675: Init alphabet tabel started
+2023-09-24 13:03:31.438676: Init alphabet tabel completed
+2023-09-24 13:03:31.438676: Init N tabel started
+2023-09-24 13:03:31.439675: Init N tabel completed
+2023-09-24 13:03:32.484613: Add row inside rules table started
+2023-09-24 13:03:32.496613: Add row inside rules table completed
+2023-09-24 13:03:32.979109: Add row inside rules table started
+2023-09-24 13:03:32.983109: Add row inside rules table completed
+2023-09-24 13:03:33.533163: Add row inside rules table started
+2023-09-24 13:03:33.537163: Add row inside rules table completed
+2023-09-24 13:03:34.129706: Add row inside alphabet table started
+2023-09-24 13:03:34.133705: Add row inside alphabet table completed
+2023-09-24 13:03:34.379492: Add row inside alphabet table started
+2023-09-24 13:03:34.383492: Add row inside alphabet table completed
+2023-09-24 13:03:35.103015: Add row inside alphabet table started
+2023-09-24 13:03:35.107016: Add row inside alphabet table completed
+2023-09-24 13:03:35.352109: Add row inside alphabet table started
+2023-09-24 13:03:35.356110: Add row inside alphabet table completed
+2023-09-24 13:03:35.888860: Add row inside N table started
+2023-09-24 13:03:35.893859: Add row inside N table completed
+2023-09-24 13:03:36.186807: Add row inside N table started
+2023-09-24 13:03:36.190806: Add row inside N table completed
+2023-09-24 13:03:36.442809: Add row inside N table started
+2023-09-24 13:03:36.447707: Add row inside N table completed
+2023-09-24 13:03:36.690136: Add row inside N table started
+2023-09-24 13:03:36.694136: Add row inside N table completed
+2023-09-24 13:03:36.887920: Add row inside N table started
+2023-09-24 13:03:36.892920: Add row inside N table completed
+2023-09-24 13:03:37.446086: Deleting row inside table start
+2023-09-24 13:03:37.446086: Deleting row inside table completed
+2023-09-24 13:03:37.670211: Deleting row inside table start
+2023-09-24 13:03:37.670211: Deleting row inside table completed
+2023-09-24 13:03:37.849792: Deleting row inside table start
+2023-09-24 13:03:37.850792: Deleting row inside table completed
+2023-09-24 13:03:38.028187: Deleting row inside table start
+2023-09-24 13:03:38.029188: Deleting row inside table completed
+2023-09-24 13:03:38.217978: Deleting row inside table start
+2023-09-24 13:03:38.217978: Deleting row inside table completed
+2023-09-24 13:03:38.781128: Deleting row inside table start
+2023-09-24 13:03:38.781128: Deleting row inside table completed
+2023-09-24 13:03:38.993247: Deleting row inside table start
+2023-09-24 13:03:38.994248: Deleting row inside table completed
+2023-09-24 13:03:39.180060: Deleting row inside table start
+2023-09-24 13:03:39.181063: Deleting row inside table completed
+2023-09-24 13:03:39.332039: Add row inside alphabet table started
+2023-09-24 13:03:39.336038: Add row inside alphabet table completed
+2023-09-24 13:03:40.812547: Deleting row inside table start
+2023-09-24 13:03:40.812547: Deleting row inside table completed
+2023-09-24 13:03:45.363123: Add row inside alphabet table started
+2023-09-24 13:03:45.367124: Add row inside alphabet table completed
+2023-09-24 13:03:45.810188: Add row inside alphabet table started
+2023-09-24 13:03:45.814188: Add row inside alphabet table completed
+2023-09-24 13:03:46.159087: Deleting row inside table start
+2023-09-24 13:03:46.159087: Deleting row inside table completed
+2023-09-24 13:03:47.406145: Add row inside rules table started
+2023-09-24 13:03:47.410840: Add row inside rules table completed
